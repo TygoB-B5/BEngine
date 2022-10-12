@@ -1,4 +1,4 @@
-#include "BEngine.h"
+#include <BEngine.h>
 
 class TestApp : public BEngine::Application
 {
@@ -7,5 +7,5 @@ class TestApp : public BEngine::Application
 
 BEngine::Application* CreateApplication()
 {
-	return new BEngine::Application();
+	return new BEngine::Application;
 }

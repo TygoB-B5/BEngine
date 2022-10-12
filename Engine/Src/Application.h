@@ -1,13 +1,12 @@
 #pragma once
 #include "Core.h"
-#include "bepch.h"
 
 namespace BEngine
 {
-	class  Application
+	class Application
 	{
 	public:
-		Application();
+		Application(); 
 		~Application();
 
 		void Run();

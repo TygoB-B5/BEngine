@@ -1,7 +1,7 @@
 #include "Core.h"
 #include "Application.h"
 
-extern BEngine::Application*  CreateApplication();
+extern BEngine::Application* CreateApplication();
 
 int main()
 {

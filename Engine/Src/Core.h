@@ -1,7 +1,5 @@
 #pragma once
 
-#ifdef BENGINE_EXPORT
-#define BENGINE_API __declspec(dllexport)
-#else
-#define BENGINE_API __declspec(dllimport)
-#endif
+#include <windows.h>
+
+#define BE_LOG(expression) SYSTEMTIME st##(__LINE__)
