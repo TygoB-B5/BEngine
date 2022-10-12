@@ -1,10 +1,12 @@
+#include "Core.h"
 #include "Application.h"
 
+extern BEngine::Application*  CreateApplication();
 
-void main()
+int main()
 {
 	// Create new instance of application
-	auto app = new BEngine::Application;
+	BEngine::Application* app = CreateApplication();
 
 	// Run application.
 	app->Run();
