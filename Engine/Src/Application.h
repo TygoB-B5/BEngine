@@ -11,7 +11,12 @@ namespace BEngine
 
 		void Run();
 
+		virtual void OnTick() = 0;
+
 	private:
 		void Init();
+
+	private:
+		bool m_IsRunning;
 	};
 }

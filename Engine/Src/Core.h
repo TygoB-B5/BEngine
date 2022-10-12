@@ -1,5 +1,9 @@
 #pragma once
 
-#include <windows.h>
+#ifdef _DEBUG
+	#define BE_DEBUG
+#endif
 
-#define BE_LOG(expression) SYSTEMTIME st##(__LINE__)
+#ifdef _RELEASE
+	#define BE_RELEASE
+#endif

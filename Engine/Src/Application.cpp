@@ -4,18 +4,22 @@
 namespace BEngine
 {
 	Application::Application()
+		: m_IsRunning(true)
 	{
-		std::cout << "Construct";
+
 	}
 
 	Application::~Application()
 	{
-		std::cout << "Destruct";
+
 	}
 
 	void Application::Run()
 	{
-		std::cout << "Running";
+		while (m_IsRunning)
+		{
+			OnTick();
+		}
 	}
 
 	void Application::Init()

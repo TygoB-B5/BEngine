@@ -161,12 +161,14 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">bepch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Src\Entry.h" />
+    <ClCompile Include="Src\Log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Application.h" />
     <ClInclude Include="BEngine.h" />
     <ClInclude Include="bepch.h" />
     <ClInclude Include="Src\Core.h" />
+    <ClInclude Include="Src\Log.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
