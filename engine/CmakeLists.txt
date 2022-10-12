@@ -1,0 +1,36 @@
+cmake_minimum_required (VERSION 3.8)
+project ("glr")
+
+# Set default cpp version to cpp 17
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
+
+# Add all source files in src folder
+file(GLOB ENGINE_SOURCES CONFIGURE_DEPENDS
+src/*.cpp
+src/*.h
+)
+
+# Add third party libs
+add_subdirectory("libs/glfw")
+add_subdirectory("libs/glad")
+add_subdirectory("libs/glm")
+
+# Add library to project
+add_library(${PROJECT_NAME} STATIC ${ENGINE_SOURCES})
+
+find_package(OpenGL REQUIRED)
+
+# Link third party libraries to project
+target_link_libraries(${PROJECT_NAME}
+OpenGL::GL
+glfw
+glad
+glm
+)
+
+message("-- GLR: Version 0.0.1 By Tygo Boons")
+
+# Include engine.h
+target_include_directories(${PROJECT_NAME} 
+PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
+)

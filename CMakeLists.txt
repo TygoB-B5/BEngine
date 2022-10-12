@@ -2,7 +2,13 @@
 project(BuasIntake)
 
 file(GLOB SOURCES
-"src/*.cpp"
-"src/*.h")
+"game/*.cpp"
+"game/*.h")
 
-add_executable (BuasIntake ${SOURCES})
+add_executable (${PROJECT_NAME} ${SOURCES})
+
+add_subdirectory(engine)
+
+target_link_libraries(${PROJECT_NAME}
+glr
+)
