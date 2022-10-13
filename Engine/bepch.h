@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <array>
 #include <string>
 #include <memory>
 #include <iostream>
@@ -11,5 +12,6 @@
 #include <iomanip>
 #include <sstream>
 #include <assert.h>
+#include <bitset>
 
 #include <windows.h>

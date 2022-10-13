@@ -2,4 +2,4 @@
 
 #include "bepch.h"
 
-// Required to make sure bepch.h is included
+// Required to compile .pch precumpiled header.

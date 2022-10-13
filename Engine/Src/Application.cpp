@@ -1,5 +1,4 @@
 #include "Application.h"
-#include "bepch.h"
 
 namespace BEngine
 {
@@ -10,21 +9,24 @@ namespace BEngine
 
 	void Application::Run()
 	{
+
+		// Main application loop.
 		while (!m_Window->IsClosed())
 		{
-			// Update window.
+			Input::Flush();
 			m_Window->Update();
-
-			// App update.
 			OnUpdate();
 		}
 	}
 
 	void Application::Init()
 	{
-		BEngine::Log::Init();
 
 		// Initialize window.
 		m_Window = std::make_shared<Window>("MyWindow", 1280, 720, false);
+
+		// Initialize other components.
+		Log::Init();
+		Input::Init(m_Window->GetNativeWindow());
 	}
 }

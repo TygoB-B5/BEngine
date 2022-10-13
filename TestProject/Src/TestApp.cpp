@@ -1,4 +1,5 @@
 #include <BEngine.h>
+#include "glm/glm.hpp"
 
 class TestApp : public BEngine::Application
 {
@@ -11,10 +12,10 @@ public:
 
 	virtual void OnUpdate() override
 	{
-		BE_LOG_TRACE("Hello")
-			BE_LOG_INFO("Hello")
-			BE_LOG_WARN("Hello")
-			BE_LOG_ERROR("Hello")
+		BE_WARN(std::to_string(BEngine::Input::GetMousePosition().x));
+
+		if (BEngine::Input::IsMouseButtonReleased(0))
+			BE_TRACE("hi3");
 	}
 };
 

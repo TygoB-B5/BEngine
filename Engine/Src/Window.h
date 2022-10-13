@@ -1,6 +1,10 @@
 #pragma once
-#include "GLFW/glfw3.h"
 #include "bepch.h"
+
+#include "glad/glad.h"
+#include "GLFW/glfw3.h"
+#include "Core.h"
+
 
 namespace BEngine
 {
@@ -9,8 +13,16 @@ namespace BEngine
 	public:
 		Window(const std::string& name, uint32_t width, uint32_t height, bool isVsync = true);
 
+		// Swap screen buffers and poll events.
 		void Update();
+
+		// Return if the window should be closed.
 		inline bool IsClosed() const { return m_ShouldClose; }
+
+		// Enable or disable vertical sync.
+		void SetVsync(bool enabled);
+
+		GLFWwindow* GetNativeWindow() const { return m_Window; }
 
 	private:
 		GLFWwindow* m_Window;

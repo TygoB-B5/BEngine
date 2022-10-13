@@ -126,7 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -134,7 +134,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,7 +148,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -157,7 +158,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|Win32'">
@@ -170,7 +172,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -180,7 +182,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -189,7 +192,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions) BENGINE_EXPORT</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <PreprocessToFile>false</PreprocessToFile>
@@ -201,7 +204,8 @@
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -214,7 +218,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -224,7 +228,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'">
@@ -237,7 +242,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -247,10 +252,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Libs\glad\src\glad.c" />
     <ClCompile Include="Src\Application.cpp" />
     <ClCompile Include="bepch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -267,6 +274,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Distribution|x64'">bepch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Src\Entry.h" />
+    <ClCompile Include="Src\Input.cpp" />
     <ClCompile Include="Src\Log.cpp" />
     <ClCompile Include="Src\Window.cpp" />
   </ItemGroup>
@@ -275,6 +283,7 @@
     <ClInclude Include="BEngine.h" />
     <ClInclude Include="bepch.h" />
     <ClInclude Include="Src\Core.h" />
+    <ClInclude Include="Src\Input.h" />
     <ClInclude Include="Src\Log.h" />
     <ClInclude Include="Src\Window.h" />
   </ItemGroup>

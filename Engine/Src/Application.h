@@ -1,7 +1,10 @@
 #pragma once
+#include "bepch.h"
+
 #include "Core.h"
 #include "Log.h"
 #include "Window.h"
+#include "Input.h"
 
 namespace BEngine
 {

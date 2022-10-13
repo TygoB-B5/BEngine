@@ -1,5 +1,4 @@
 #include "Window.h"
-#include "Core.h"
 
 namespace BEngine
 {
@@ -19,16 +18,29 @@ namespace BEngine
 
 		BE_ASSERT(m_Window, "Window was not Initialized.")
 
+		// Set window to current context.
+		glfwMakeContextCurrent(m_Window);
+
+		// Initialize GLAD.
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+		{
+			BE_ASSERT(false, "Unable to Initialize GLAD")
+		}
+
 		// Set up glfw error callback with lambda.
 		glfwSetErrorCallback([](int error, const char* msg) {
 			BE_ASSERT(false, "[" + std::to_string(error) + "] " + msg)
 			});
 
-		// Set window to current context.
-		glfwMakeContextCurrent(m_Window);
-
 		// Turn vsync on or off.
 		glfwSwapInterval(isVsync ? 1 : 0);
+
+		// Log OpenGl specs.
+		BE_INFO("BEngine")
+		BE_INFO(std::string(" ") + (const char*)glGetString(GL_RENDERER))
+		BE_INFO(std::string(" ") + (const char*)glGetString(GL_VERSION))
+		BE_INFO(std::string(" ") + (const char*)glGetString(GL_VENDOR))
+		BE_INFO(std::string(" ") + (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION))
 	}
 
 	void Window::Update()
@@ -36,10 +48,18 @@ namespace BEngine
 		// Poll input events.
 		glfwPollEvents();
 
-		// Swap buffers.
+		// Swap screen buffers.
 		glfwSwapBuffers(m_Window);
 
 		// Set shouldClose variable when the user closes the window.
 		m_ShouldClose = glfwWindowShouldClose(m_Window);
+	}
+
+	void Window::SetVsync(bool enabled)
+	{
+		m_Vsync = enabled;
+
+		// Turn vsync on or off.
+		glfwSwapInterval(m_Vsync ? 1 : 0);
 	}
 }
