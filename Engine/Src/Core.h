@@ -27,7 +27,7 @@
 	#define BE_LOG_ASSERT(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::WhiteOnRed, std::string("[ASSERT] ") + message);
 
 	#include <Windows.h>
-	#define BE_ASSERT(condition, message) BE_LOG_ASSERT(message) if(condition) { DebugBreak(); }
+	#define BE_ASSERT(condition, message)if(!condition) { BE_LOG_ASSERT(message)  DebugBreak(); }
 #else
 	#define BE_LOG_TRACE(message) 
 	#define BE_LOG_INFO(message)

@@ -4,15 +4,18 @@
 namespace BEngine
 {
 	Application::Application()
-		: m_IsRunning(true)
 	{
 		Init();	
 	}
 
 	void Application::Run()
 	{
-		while (m_IsRunning)
+		while (!m_Window->IsClosed())
 		{
+			// Update window.
+			m_Window->Update();
+
+			// App update.
 			OnUpdate();
 		}
 	}
@@ -21,6 +24,7 @@ namespace BEngine
 	{
 		BEngine::Log::Init();
 
-		m_Window = std::make_shared<Window>("MyWindow", 1280, 720);
+		// Initialize window.
+		m_Window = std::make_shared<Window>("MyWindow", 1280, 720, false);
 	}
 }

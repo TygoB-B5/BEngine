@@ -6,7 +6,7 @@ namespace BEngine
 	Log* Log::s_Instance = new Log;
 
 	Log::Log()
-		: m_LastLogColor(LogColor::White), m_ConsoleHandle(GetStdHandle(STD_OUTPUT_HANDLE)), m_Initialized(false)
+		: m_LastLogColor((Log::LogColor)0), m_ConsoleHandle(GetStdHandle(STD_OUTPUT_HANDLE)), m_Initialized(false)
 	{
 		// Hide console
 		ShowWindow(GetConsoleWindow(), SW_HIDE);
@@ -42,9 +42,6 @@ namespace BEngine
 			SetConsoleTextAttribute(m_ConsoleHandle, (uint8_t)color);
 		}
 
-		// Print newline first
-		std::cout << '\n';
-
 		// Print the full message.
 		std::cout << ' ' << FormatTime(
 			localTime.tm_year, 
@@ -55,6 +52,9 @@ namespace BEngine
 			localTime.tm_sec,
 			milliseconds)
 			+ ' ' + message;
+
+		// Print newline
+		std::cout << '\n';
 	}
 
 	std::string Log::FormatTime(uint32_t year, uint32_t month, uint32_t day, uint32_t hour, uint32_t minutes, uint32_t seconds, uint32_t milliseconds)

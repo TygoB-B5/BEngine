@@ -15,13 +15,13 @@ namespace BEngine
 		// LogColor values are the windows console color id's.
 		enum class LogColor
 		{
-			White = 0x0F,
-			Blue = FOREGROUND_BLUE,
-			Green = FOREGROUND_GREEN,
-			Red = FOREGROUND_RED,
-			Purple = 0x05,
-			Yellow = 0x06,
-			WhiteOnRed = 0x0F | BACKGROUND_RED,
+			White = 0x0F | 0,
+			Blue = 0x03 | 0,
+			Green = 0x02 | 0,
+			Red = 0x04 | 0,
+			Purple = 0x05 | 0,
+			Yellow = 0x06 | 0,
+			WhiteOnRed = 0x0F | 0x0040,
 		};
 
 		Log();

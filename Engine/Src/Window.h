@@ -1,6 +1,6 @@
 #pragma once
-#include "bepch.h"
 #include "GLFW/glfw3.h"
+#include "bepch.h"
 
 namespace BEngine
 {
@@ -10,7 +10,7 @@ namespace BEngine
 		Window(const std::string& name, uint32_t width, uint32_t height, bool isVsync = true);
 
 		void Update();
-		inline bool GetShouldClose() const { return m_ShouldClose; } ;
+		inline bool IsClosed() const { return m_ShouldClose; }
 
 	private:
 		GLFWwindow* m_Window;

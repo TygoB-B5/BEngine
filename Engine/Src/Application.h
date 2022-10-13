@@ -19,6 +19,5 @@ namespace BEngine
 
 	private:
 		RefPtr<Window> m_Window;
-		bool m_IsRunning;
 	};
 }
