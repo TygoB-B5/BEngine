@@ -10,5 +10,6 @@
 #include <chrono>
 #include <iomanip>
 #include <sstream>
+#include <assert.h>
 
 #include <windows.h>

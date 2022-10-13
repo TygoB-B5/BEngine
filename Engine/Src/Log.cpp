@@ -5,9 +5,27 @@ namespace BEngine
 
 	Log* Log::s_Instance = new Log;
 
+	Log::Log()
+		: m_LastLogColor(LogColor::White), m_ConsoleHandle(GetStdHandle(STD_OUTPUT_HANDLE)), m_Initialized(false)
+	{
+		// Hide console
+		ShowWindow(GetConsoleWindow(), SW_HIDE);
+	}
+
+	void Log::InitImpl()
+	{
+		// Show console.
+		ShowWindow(GetConsoleWindow(), SW_SHOW);
+
+		m_Initialized = true;
+	}
+
 	void Log::LogMessageImpl(LogColor color, const std::string& message)
 	{
-		
+		// If Log is not initlaized ignore every msg
+		if (!m_Initialized)
+			return;
+
 		// Get current time point before doing anything else as to make the log time as accurate as possible.
 		std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
 
@@ -21,11 +39,14 @@ namespace BEngine
 			m_LastLogColor = color;
 
 			// Sets the text color of the messages printed next.
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (uint8_t)color);
+			SetConsoleTextAttribute(m_ConsoleHandle, (uint8_t)color);
 		}
 
-		// Prints the log message in the console.
-		std::cout << FormatTime(
+		// Print newline first
+		std::cout << '\n';
+
+		// Print the full message.
+		std::cout << ' ' << FormatTime(
 			localTime.tm_year, 
 			localTime.tm_mon,
 			localTime.tm_mday,
@@ -33,7 +54,7 @@ namespace BEngine
 			localTime.tm_min,
 			localTime.tm_sec,
 			milliseconds)
-			+ ' ' + message + '\n';
+			+ ' ' + message;
 	}
 
 	std::string Log::FormatTime(uint32_t year, uint32_t month, uint32_t day, uint32_t hour, uint32_t minutes, uint32_t seconds, uint32_t milliseconds)
@@ -55,10 +76,10 @@ namespace BEngine
 		time_t tTime = system_clock::to_time_t(timePoint);
 
 		// Fill local_tm container with local time data.
-		tm localTime;
+		LocalTime localTime;
 		localtime_s(&localTime, &tTime);
 
-		// Calculation done to account for apoch.
+		// Calculation done to account for apoch starting in 1900.
 		localTime.tm_year += 1900;
 
 		// Calculation done to account for month starting at 0 instead of 1.

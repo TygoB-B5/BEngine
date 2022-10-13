@@ -6,24 +6,21 @@ namespace BEngine
 	Application::Application()
 		: m_IsRunning(true)
 	{
-
-	}
-
-	Application::~Application()
-	{
-
+		Init();	
 	}
 
 	void Application::Run()
 	{
 		while (m_IsRunning)
 		{
-			OnTick();
+			OnUpdate();
 		}
 	}
 
 	void Application::Init()
 	{
+		BEngine::Log::Init();
 
+		m_Window = std::make_shared<Window>("MyWindow", 1280, 720);
 	}
 }

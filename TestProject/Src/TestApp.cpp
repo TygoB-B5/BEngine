@@ -2,10 +2,20 @@
 
 class TestApp : public BEngine::Application
 {
-	virtual void OnTick() override
+public:
+
+	TestApp()
 	{
-		bool a = true;
-		BEngine::Log::LogMessage(BEngine::Log::LogColor::Red, "Hello World!");
+		BE_LOG_TRACE("Hello")
+		BE_LOG_INFO("Hello")
+		BE_LOG_WARN("Hello")
+		BE_LOG_ERROR("Hello")
+		BE_ASSERT(false, "Assertion found, oh no")
+	}
+
+	virtual void OnUpdate() override
+	{
+		
 	}
 };
 

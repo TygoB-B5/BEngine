@@ -16,16 +16,15 @@ namespace BEngine
 		enum class LogColor
 		{
 			White = 0x0F,
-			Blue = 0x09,
-			Green = 0x02,
-			Red = 0x04,
+			Blue = FOREGROUND_BLUE,
+			Green = FOREGROUND_GREEN,
+			Red = FOREGROUND_RED,
 			Purple = 0x05,
 			Yellow = 0x06,
+			WhiteOnRed = 0x0F | BACKGROUND_RED,
 		};
 
-		Log()
-			: m_LastLogColor(LogColor::White)
-		{}
+		Log();
 
 		// Logs a message in the console with a specified LogType.
 		static void LogMessage(LogColor type, const std::string& message)
@@ -33,8 +32,15 @@ namespace BEngine
 			s_Instance->LogMessageImpl(type, message);
 		}
 
+		static void Init()
+		{
+			s_Instance->InitImpl();
+		}
 
 	private:
+
+		// Initializes the log system.
+		void InitImpl();
 
 		// Member implementation of LogMessage
 		void LogMessageImpl(LogColor type, const std::string& message);
@@ -54,6 +60,8 @@ namespace BEngine
 		static Log* s_Instance;
 
 		LogColor m_LastLogColor;
+		HANDLE m_ConsoleHandle;
+		bool m_Initialized;
 
 	};
 }

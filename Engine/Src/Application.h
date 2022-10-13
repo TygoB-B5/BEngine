@@ -1,5 +1,7 @@
 #pragma once
 #include "Core.h"
+#include "Log.h"
+#include "Window.h"
 
 namespace BEngine
 {
@@ -7,16 +9,16 @@ namespace BEngine
 	{
 	public:
 		Application(); 
-		~Application();
 
 		void Run();
 
-		virtual void OnTick() = 0;
+		virtual void OnUpdate() = 0;
 
 	private:
 		void Init();
 
 	private:
+		RefPtr<Window> m_Window;
 		bool m_IsRunning;
 	};
 }
