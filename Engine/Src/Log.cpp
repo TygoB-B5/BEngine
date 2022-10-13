@@ -1,4 +1,5 @@
 #include "Log.h"
+#include "Core.h"
 
 namespace BEngine
 {
@@ -6,25 +7,13 @@ namespace BEngine
 	Log* Log::s_Instance = new Log;
 
 	Log::Log()
-		: m_LastLogColor((Log::LogColor)0), m_ConsoleHandle(GetStdHandle(STD_OUTPUT_HANDLE)), m_Initialized(false)
+		: m_LastLogColor((Log::LogColor)0), m_ConsoleHandle(GetStdHandle(STD_OUTPUT_HANDLE))
 	{
-		// Hide console
-		ShowWindow(GetConsoleWindow(), SW_HIDE);
-	}
-
-	void Log::InitImpl()
-	{
-		// Show console.
-		ShowWindow(GetConsoleWindow(), SW_SHOW);
-
-		m_Initialized = true;
+		FREE_CONSOLE()
 	}
 
 	void Log::LogMessageImpl(LogColor color, const std::string& message)
 	{
-		// If Log is not initlaized ignore every msg
-		if (!m_Initialized)
-			return;
 
 		// Get current time point before doing anything else as to make the log time as accurate as possible.
 		std::chrono::system_clock::time_point now = std::chrono::system_clock::now();

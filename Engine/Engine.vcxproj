@@ -126,7 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Libs/FreeImage/x32</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -148,7 +148,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Libs/FreeImage/x32</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -172,7 +172,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Libs/FreeImage/x32</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -192,7 +192,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions) BENGINE_EXPORT</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Libs/FreeImage/x32</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <PreprocessToFile>false</PreprocessToFile>
@@ -218,7 +218,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Libs/FreeImage/x32</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -242,7 +242,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Libs/FreeImage/x32</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -281,7 +281,6 @@
     <ClCompile Include="Src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\MinecraftRemake\BlockGame\engine\src\time.h" />
     <ClInclude Include="Src\Application.h" />
     <ClInclude Include="BEngine.h" />
     <ClInclude Include="bepch.h" />

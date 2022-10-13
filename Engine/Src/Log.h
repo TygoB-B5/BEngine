@@ -32,15 +32,7 @@ namespace BEngine
 			s_Instance->LogMessageImpl(type, message);
 		}
 
-		static void Init()
-		{
-			s_Instance->InitImpl();
-		}
-
 	private:
-
-		// Initializes the log system.
-		void InitImpl();
 
 		// Member implementation of LogMessage
 		void LogMessageImpl(LogColor type, const std::string& message);
@@ -61,7 +53,6 @@ namespace BEngine
 
 		LogColor m_LastLogColor;
 		HANDLE m_ConsoleHandle;
-		bool m_Initialized;
 
 	};
 }

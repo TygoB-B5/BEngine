@@ -24,8 +24,6 @@ namespace BEngine
 
 	void Application::Init()
 	{
-		Log::Init();
-
 		// Create window.
 		m_Window = std::make_shared<Window>(m_AppName, 1280, 720, false);
 

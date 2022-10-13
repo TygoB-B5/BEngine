@@ -17,7 +17,7 @@
 
 // Initialize log macros if build configuration is not Distribute.
 
-#if defined(BE_DEBUG) || defined(BE_RELEASE)
+#if !defined(BE_DISTRIBUTE)
 	#include "Log.h"
 	#define BE_TRACE(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::White, std::string("[TRACE] ") + message);
 	#define BE_INFO(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Green, std::string("[INFO] ") + message);
@@ -30,10 +30,17 @@
 	#define BE_INFO(message)
 	#define BE_WARN(message)
 	#define BE_ERROR(message) 
-	#define BE_ASSERT(message)
 	#define BE_ASSERT(condition, message)
 #endif
 
+
+// Define free console macro if the config type is distribute
+
+#ifdef BE_DISTRIBUTE
+	#define FREE_CONSOLE() ShowWindow(GetConsoleWindow(), 0);  FreeConsole();
+#else
+	#define FREE_CONSOLE()
+#endif
 
 #include <memory>
 namespace BEngine
