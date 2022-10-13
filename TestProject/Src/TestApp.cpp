@@ -9,6 +9,8 @@ public:
 	TestApp()
 		: BEngine::Application("TestApp")
 	{
+		GetWindow()->SetVsync(true);
+
 		// Variables for checking compilation/linking correctness
 		int success;
 		char infoLog[512];
@@ -17,8 +19,9 @@ public:
 		const char* vertexShaderSource =
 			"#version 330 core\n"
 			"layout (location = 0) in vec3 aPos;\n"
+			"uniform float lol;\n"
 			"void main() {\n"
-			"	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+			"	gl_Position = vec4(aPos.x + sin(lol), aPos.y + cos(lol), aPos.z, 1.0);\n"
 			"}\0";
 
 		// Basic fragment shader
@@ -132,8 +135,8 @@ public:
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
-
-		BE_ERROR(std::to_string(BEngine::Time::GetFPS()))
+		GLuint id = glGetUniformLocation(shaderProgram, "lol");
+		glUniform1f(id, BEngine::Time::GetElapsedTime());
 	}
 
 	int shaderProgram;
