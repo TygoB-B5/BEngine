@@ -11,7 +11,7 @@ namespace BEngine
 	class Application
 	{
 	public:
-		Application(); 
+		Application(const std::string& appName); 
 
 		void Run();
 
@@ -22,5 +22,6 @@ namespace BEngine
 
 	private:
 		RefPtr<Window> m_Window;
+		std::string m_AppName;
 	};
 }

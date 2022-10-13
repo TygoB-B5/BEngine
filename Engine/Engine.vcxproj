@@ -257,6 +257,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\MinecraftRemake\BlockGame\engine\src\time.cpp" />
     <ClCompile Include="Libs\glad\src\glad.c" />
     <ClCompile Include="Src\Application.cpp" />
     <ClCompile Include="bepch.cpp">
@@ -276,15 +277,18 @@
     <ClCompile Include="Src\Entry.h" />
     <ClCompile Include="Src\Input.cpp" />
     <ClCompile Include="Src\Log.cpp" />
+    <ClCompile Include="Src\Time.cpp" />
     <ClCompile Include="Src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\MinecraftRemake\BlockGame\engine\src\time.h" />
     <ClInclude Include="Src\Application.h" />
     <ClInclude Include="BEngine.h" />
     <ClInclude Include="bepch.h" />
     <ClInclude Include="Src\Core.h" />
     <ClInclude Include="Src\Input.h" />
     <ClInclude Include="Src\Log.h" />
+    <ClInclude Include="Src\Time.h" />
     <ClInclude Include="Src\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

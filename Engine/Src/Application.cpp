@@ -1,8 +1,10 @@
 #include "Application.h"
+#include "Time.h"
 
 namespace BEngine
 {
-	Application::Application()
+	Application::Application(const std::string& appName)
+		: m_AppName(appName)
 	{
 		Init();	
 	}
@@ -14,6 +16,7 @@ namespace BEngine
 		while (!m_Window->IsClosed())
 		{
 			Input::Flush();
+			Time::Tick();
 			m_Window->Update();
 			OnUpdate();
 		}
@@ -21,12 +24,11 @@ namespace BEngine
 
 	void Application::Init()
 	{
-
-		// Initialize window.
-		m_Window = std::make_shared<Window>("MyWindow", 1280, 720, false);
-
-		// Initialize other components.
 		Log::Init();
+
+		// Create window.
+		m_Window = std::make_shared<Window>(m_AppName, 1280, 720, false);
+
 		Input::Init(m_Window->GetNativeWindow());
 	}
 }

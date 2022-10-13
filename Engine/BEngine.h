@@ -5,3 +5,4 @@
 #include "Src/Entry.h"
 #include "Src/Input.h"
 #include "Src/Log.h"
+#include "Src/Time.h"
