@@ -5,6 +5,8 @@ extern BEngine::Application* CreateApplication();
 
 int main()
 {
+	SHOW_CONSOLE()
+
 	// Create new instance of application
 	BEngine::Application* app = CreateApplication();
 

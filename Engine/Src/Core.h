@@ -38,7 +38,7 @@
 // Define free console macro if the config type is distribute, this macro removes the console from the application.
 
 #ifdef BE_DISTRIBUTE
-	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), FALSE);
+	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), FALSE); FreeConsole();
 #else
 	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), TRUE);
 #endif
