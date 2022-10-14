@@ -1,6 +1,4 @@
 #include <BEngine.h>
-#include "glm/glm.hpp"
-#include "glad/glad.h"
 
 class TestApp : public BEngine::Application
 {
@@ -124,6 +122,10 @@ public:
 
 		this->VAO = VAO;
 		this->shaderProgram = shaderProgram;
+
+
+
+
 	}
 
 	virtual void OnUpdate() override

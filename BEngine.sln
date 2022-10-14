@@ -9,36 +9,21 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProject", "TestProject\
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Distribute|x64 = Distribute|x64
 		Distribute|x86 = Distribute|x86
-		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Debug|x64.ActiveCfg = Debug|x64
-		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Debug|x64.Build.0 = Debug|x64
 		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Debug|x86.ActiveCfg = Debug|Win32
 		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Debug|x86.Build.0 = Debug|Win32
-		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Distribute|x64.ActiveCfg = Distribution|x64
-		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Distribute|x64.Build.0 = Distribution|x64
 		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Distribute|x86.ActiveCfg = Distribution|Win32
 		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Distribute|x86.Build.0 = Distribution|Win32
-		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Release|x64.ActiveCfg = Release|x64
-		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Release|x64.Build.0 = Release|x64
 		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Release|x86.ActiveCfg = Release|Win32
 		{6AF518AF-9D9A-4299-9AC6-009DECA66537}.Release|x86.Build.0 = Release|Win32
-		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Debug|x64.ActiveCfg = Debug|x64
-		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Debug|x64.Build.0 = Debug|x64
 		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Debug|x86.ActiveCfg = Debug|Win32
 		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Debug|x86.Build.0 = Debug|Win32
-		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Distribute|x64.ActiveCfg = Distribution|x64
-		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Distribute|x64.Build.0 = Distribution|x64
 		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Distribute|x86.ActiveCfg = Distribution|Win32
 		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Distribute|x86.Build.0 = Distribution|Win32
-		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Release|x64.ActiveCfg = Release|x64
-		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Release|x64.Build.0 = Release|x64
 		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Release|x86.ActiveCfg = Release|Win32
 		{31F2B698-7C69-4D8D-BB68-4AB215F1009E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection

@@ -36,9 +36,6 @@
     <ClCompile Include="Src\Input.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MinecraftRemake\BlockGame\engine\src\time.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

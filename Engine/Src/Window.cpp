@@ -37,10 +37,10 @@ namespace BEngine
 
 		// Log OpenGl specs.
 		BE_INFO("BEngine")
-		BE_INFO(std::string(" ") + (const char*)glGetString(GL_RENDERER))
-		BE_INFO(std::string(" ") + (const char*)glGetString(GL_VERSION))
-		BE_INFO(std::string(" ") + (const char*)glGetString(GL_VENDOR))
-		BE_INFO(std::string(" ") + (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION))
+			BE_INFO(std::string(" ") + (const char*)glGetString(GL_RENDERER))
+			BE_INFO(std::string(" ") + (const char*)glGetString(GL_VERSION))
+			BE_INFO(std::string(" ") + (const char*)glGetString(GL_VENDOR))
+			BE_INFO(std::string(" ") + (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION))
 	}
 
 	void Window::Update()
@@ -53,6 +53,8 @@ namespace BEngine
 
 		// Set shouldClose variable when the user closes the window.
 		m_ShouldClose = glfwWindowShouldClose(m_Window);
+
+
 	}
 
 	void Window::SetVsync(bool enabled)

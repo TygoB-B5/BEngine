@@ -14,7 +14,7 @@ namespace BEngine
 	{
 
 		// Get current glfw time.
-		m_ElapsedTime = glfwGetTime();
+		m_ElapsedTime = (float)glfwGetTime();
 
 		// Update deltaTime;
 		m_DeltaTime = m_ElapsedTime - m_OldElapsedTime;

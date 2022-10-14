@@ -15,6 +15,8 @@
 #endif
 
 
+#include <Windows.h>
+
 // Initialize log macros if build configuration is not Distribute.
 
 #if !defined(BE_DISTRIBUTE)
@@ -23,7 +25,6 @@
 	#define BE_INFO(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Green, std::string("[INFO] ") + message);
 	#define BE_WARN(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Yellow, std::string("[WARN] ") + message);
 	#define BE_ERROR(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Red, std::string("[ERROR] ") + message);
-	#include <Windows.h>
 	#define BE_ASSERT(condition, message)if(!condition) { BEngine::Log::LogMessage(BEngine::Log::LogColor::WhiteOnRed, std::string("[ASSERT] ") + message); DebugBreak(); }
 #else
 	#define BE_TRACE(message) 
@@ -34,12 +35,12 @@
 #endif
 
 
-// Define free console macro if the config type is distribute
+// Define free console macro if the config type is distribute, this macro removes the console from the application.
 
 #ifdef BE_DISTRIBUTE
-	#define FREE_CONSOLE() ShowWindow(GetConsoleWindow(), 0);  FreeConsole();
+	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), FALSE);
 #else
-	#define FREE_CONSOLE()
+	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), TRUE);
 #endif
 
 #include <memory>

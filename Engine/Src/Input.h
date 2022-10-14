@@ -128,8 +128,8 @@
 #define MOUSECODE_AMOUNT	   3
 
 #include "bepch.h"
-#include "GLFW/glfw3.h"
 #include "glm/glm.hpp"
+#include "GLFW/glfw3.h"
 
 namespace BEngine
 {
