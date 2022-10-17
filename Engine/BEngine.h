@@ -6,3 +6,5 @@
 #include "Src/Entry.h"
 #include "Src/Time.h"
 #include "Src/Log.h"
+
+#include "Src/Renderer/Shader.h"

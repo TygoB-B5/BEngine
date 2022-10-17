@@ -142,7 +142,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\FileReader.cpp" />
     <ClCompile Include="Libs\glad\src\glad.c" />
+    <ClCompile Include="Src\Renderer\Shader.cpp" />
     <ClCompile Include="Src\Application.cpp" />
     <ClCompile Include="bepch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -159,6 +161,8 @@
     <ClCompile Include="Src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\FileReader.h" />
+    <ClInclude Include="Src\Renderer\Shader.h" />
     <ClInclude Include="Src\Application.h" />
     <ClInclude Include="BEngine.h" />
     <ClInclude Include="bepch.h" />

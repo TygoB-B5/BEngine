@@ -9,87 +9,8 @@ public:
 	{
 		GetWindow()->SetVsync(true);
 
-		// Variables for checking compilation/linking correctness
-		int success;
-		char infoLog[512];
-
-		// Basic vertex shader in GLSL (OpenGL Shading Language)
-		const char* vertexShaderSource =
-			"#version 330 core\n"
-			"layout (location = 0) in vec3 aPos;\n"
-			"uniform float lol;\n"
-			"void main() {\n"
-			"	gl_Position = vec4(aPos.x + sin(lol), aPos.y + cos(lol), aPos.z, 1.0);\n"
-			"}\0";
-
-		// Basic fragment shader
-		const char* fragmentShaderSource =
-			"#version 330 core\n"
-			"out vec4 FragColor;\n"
-			"void main() {\n"
-			"	FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-			"}\0";
-
-		// Create a vertex shader object
-		unsigned int vertexShader;
-		vertexShader = glCreateShader(GL_VERTEX_SHADER);
-
-		// Attach the shader source code to the shader object
-		glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-
-		// Compile the vertex shader dynamically 
-		glCompileShader(vertexShader);
-
-		// Check if compilation was successful
-		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-		if (!success) {
-			glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n";
-			std::cout << infoLog << std::endl;
-		}
-
-		// Create a fragment shader object
-		unsigned int fragmentShader;
-		fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-		// Attach the shader source code to the shader object
-		glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-
-		// Compile the fragment shader dynamically
-		glCompileShader(fragmentShader);
-		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-		if (!success) {
-			glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n";
-			std::cout << infoLog << std::endl;
-		}
-
-
-		// 2. Link shaders
-
-		// Create a shader program
-		unsigned int shaderProgram;
-		shaderProgram = glCreateProgram();
-
-		// Attach the compiled shaders to the shader program
-		glAttachShader(shaderProgram, vertexShader);
-		glAttachShader(shaderProgram, fragmentShader);
-		glLinkProgram(shaderProgram);
-
-		// Check if linking was successful
-		glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-		if (!success) {
-			glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-			std::cout << "ERROR::PROGRAM::LINKING_FAILED\n";
-			std::cout << infoLog << std::endl;
-		}
-
-		// Delete shader objects if we no longer need them anymore
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
-
-
-		// 3. Set up vertex data and configure vertex attributes
+		BEngine::Shader shader("Assets/shader.glsl");
+		m_Shader = shader;
 
 		// Define three vertices with 3D positions
 		float vertices[] = {
@@ -121,11 +42,6 @@ public:
 
 
 		this->VAO = VAO;
-		this->shaderProgram = shaderProgram;
-
-
-
-
 	}
 
 	virtual void OnUpdate() override
@@ -133,15 +49,13 @@ public:
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		glUseProgram(shaderProgram);
+		m_Shader.Bind();
+
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
-
-		GLuint id = glGetUniformLocation(shaderProgram, "lol");
-		glUniform1f(id, BEngine::Time::GetElapsedTime());
 	}
 
-	int shaderProgram;
+	BEngine::Shader m_Shader;
 	int VAO;
 };
 

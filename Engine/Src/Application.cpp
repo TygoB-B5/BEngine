@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "Time.h"
 
+#include "Renderer/Shader.h"
+
 namespace BEngine
 {
 	Application::Application(const std::string& appName)
@@ -11,7 +13,6 @@ namespace BEngine
 
 	void Application::Run()
 	{
-
 		// Main application loop.
 		while (!m_Window->IsClosed())
 		{
