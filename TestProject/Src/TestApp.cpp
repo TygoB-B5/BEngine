@@ -11,45 +11,35 @@ public:
 
 		m_Shader = std::make_shared<BEngine::Shader>("Assets/shader.glsl");
 
-		m_VertLayout = std::make_shared<BEngine::VertexLayout>(
-			BEngine::VertexLayout(
-				{
-					{ GL_FLOAT, 3},
-					{ GL_FLOAT, 3}
-				}));
-
-		float vertices[] = {
+		std::vector<float> vertices = {
 			-0.5f, -0.5f, 0.0f, 1, 1, -1,
 			0.5f, -0.5f, 0.0f,  1, -1, 1,
 			0.5f,  0.5f, 0.0f,  -1, -1, 1,
 			-0.5f,  0.5f, 0.0f,  1, -1 , -1,
 		};
 
-		uint32_t indices[] = {
+		std::vector<uint32_t> indices = {
 			0, 1, 2, 2, 3, 0
 		};
 
-		unsigned int VBO, VAO, IBO;
-		glGenVertexArrays(1, &VAO);
-		glGenBuffers(1, &VBO);
-		glGenBuffers(1, &IBO);
 
-		glBindVertexArray(VAO);
-
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		m_VertLayout = std::make_shared<BEngine::VertexArray>();
+		m_VertBuffer = std::make_shared<BEngine::VertexBuffer>();
+		m_IndexBuffer = std::make_shared<BEngine::IndexBuffer>();
 
 		m_VertLayout->Bind();
 
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		m_VertBuffer->SetData(vertices);
+		m_IndexBuffer->SetData(indices);
 
-		this->VAO = VAO;
-		this->IBO = IBO;
+		m_VertLayout->SetLayout({
+			{ GL_FLOAT, 3},
+			{ GL_FLOAT, 3 }
+			});
+
+		m_VertBuffer->UnBind();
+		m_VertLayout->UnBind();
+		m_IndexBuffer->UnBind();
 	}
 
 	virtual void OnUpdate() override
@@ -59,14 +49,16 @@ public:
 
 		m_Shader->Bind();
 		m_Shader->UploadUniformFloat("_FunnyFloat", sin(BEngine::Time::GetElapsedTime() * 10));
-		glBindVertexArray(VAO);
+		m_VertLayout->Bind();
 
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetElementCount(), GL_UNSIGNED_INT, 0);
 	}
 
 	BEngine::RefPtr<BEngine::Shader> m_Shader;
-	BEngine::RefPtr<BEngine::VertexLayout> m_VertLayout;
-	int VAO, IBO;
+	BEngine::RefPtr<BEngine::VertexArray> m_VertLayout;
+
+	BEngine::RefPtr<BEngine::VertexBuffer> m_VertBuffer;
+	BEngine::RefPtr<BEngine::IndexBuffer> m_IndexBuffer;
 };
 
 BEngine::Application* CreateApplication()

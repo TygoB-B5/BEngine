@@ -1,6 +1,5 @@
 #pragma once
 #include "bepch.h"
-#include "VertexLayout.h"
 #include "glad/glad.h"
 #include "glm/glm.hpp"
 

@@ -8,4 +8,5 @@
 #include "Src/Log.h"
 
 #include "Src/Renderer/Shader.h"
-#include "Src/Renderer/VertexLayout.h"
+#include "Src/Renderer/VertexArray.h"
+#include "Src/Renderer/Buffer.h"

@@ -15,18 +15,27 @@ namespace BEngine
 		GLuint Amount;
 	};
 
-	class VertexLayout
+	class VertexArray
 	{
 	public:
-		VertexLayout(const std::vector<VertexDataElement>& vertexElements);
+		VertexArray();
+		~VertexArray();
 
-		// Bind vertex layout
+		// Set the vertex layout of the vertex array.
+		void SetLayout(const std::vector<VertexDataElement>& vertexElements);
+
+		// Bind the vertex array.
 		void Bind();
+
+		// Unbind the vertex array.
+		void UnBind();
 
 	private:
 
-		GLuint m_Stride;
 		std::vector<VertexDataElement> m_DataElements;
+		uint32_t m_Stride;
+
+		uint32_t m_RenderID;
 	};
 
 }

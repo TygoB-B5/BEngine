@@ -142,6 +142,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Renderer\Buffer.cpp" />
     <ClCompile Include="Src\File.cpp" />
     <ClCompile Include="Libs\glad\src\glad.c" />
     <ClCompile Include="Src\Renderer\Shader.cpp" />
@@ -159,9 +160,10 @@
     <ClCompile Include="Src\Log.cpp" />
     <ClCompile Include="Src\Time.cpp" />
     <ClCompile Include="Src\Window.cpp" />
-    <ClCompile Include="Src\Renderer\VertexLayout.cpp" />
+    <ClCompile Include="Src\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Renderer\Buffer.h" />
     <ClInclude Include="Src\File.h" />
     <ClInclude Include="Src\Renderer\Shader.h" />
     <ClInclude Include="Src\Application.h" />
@@ -172,7 +174,7 @@
     <ClInclude Include="Src\Log.h" />
     <ClInclude Include="Src\Time.h" />
     <ClInclude Include="Src\Window.h" />
-    <ClInclude Include="Src\Renderer\VertexLayout.h" />
+    <ClInclude Include="Src\Renderer\VertexArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
