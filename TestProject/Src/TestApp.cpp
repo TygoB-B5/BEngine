@@ -9,14 +9,21 @@ public:
 	{
 		GetWindow()->SetVsync(true);
 
-		BEngine::Shader shader("Assets/shader.glsl");
-		m_Shader = shader;
+		m_Shader = std::make_shared<BEngine::Shader>("Assets/shader.glsl");
+
+		m_VertLayout = std::make_shared<BEngine::VertexLayout>(
+			BEngine::VertexLayout(
+				{
+					{ GL_FLOAT, 3},
+					{ GL_FLOAT, 3}
+				}));
+
 
 		// Define three vertices with 3D positions
 		float vertices[] = {
-			-0.5f, -0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f,
-			0.0f,  0.5f, 0.0f
+			-0.5f, -0.5f, 0.0f, 0.25f, 0.5f, 0.25f,
+			0.5f, -0.5f, 0.0f,  0.5f, 0.25f, 1,
+			0.0f,  0.5f, 0.0f,  1, 0.5f, 0.25f,
 		};
 
 		// Generate vertex buffer object (VBO) and vertex array object (VAO)
@@ -31,12 +38,8 @@ public:
 		// Copy the vertex data into the buffer's memory
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		// Set attributes that describe how OpenGL should interpret the vertex data
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0);
-
-
 		// Unbind so other calls won't modify VBO and VAO
+		m_VertLayout->Bind();
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 
@@ -46,16 +49,17 @@ public:
 
 	virtual void OnUpdate() override
 	{
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(0.05f, 0.06f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		m_Shader.Bind();
+		m_Shader->Bind();
 
 		glBindVertexArray(VAO);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 	}
 
-	BEngine::Shader m_Shader;
+	BEngine::RefPtr<BEngine::Shader> m_Shader;
+	BEngine::RefPtr<BEngine::VertexLayout> m_VertLayout;
 	int VAO;
 };
 

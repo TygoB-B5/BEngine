@@ -159,6 +159,7 @@
     <ClCompile Include="Src\Log.cpp" />
     <ClCompile Include="Src\Time.cpp" />
     <ClCompile Include="Src\Window.cpp" />
+    <ClCompile Include="Src\Renderer\VertexLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\FileReader.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Src\Log.h" />
     <ClInclude Include="Src\Time.h" />
     <ClInclude Include="Src\Window.h" />
+    <ClInclude Include="Src\Renderer\VertexLayout.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

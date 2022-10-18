@@ -13,25 +13,28 @@ namespace BEngine
 		return 0;
 	}
 
-	Shader::Shader()
-	{
-	}
-
 	Shader::Shader(const std::string& filename)
-	{
-		SetShader(filename);
-	}
-
-	void Shader::SetShader(const std::string& filename)
 	{
 		std::string src = FileReader::OpenFile(filename);
 		m_Sources = PreProcess(src);
 		Compile(m_Sources);
 	}
 
+	Shader::~Shader()
+	{
+		UnBind();
+		glDeleteProgram(m_RendererID);
+	}
+
 	void Shader::Bind()
 	{
+		BE_ASSERT(m_RendererID, "Shader has not been compiled.")
 		glUseProgram(m_RendererID);
+	}
+
+	void Shader::UnBind()
+	{
+		glUseProgram(0);
 	}
 
 	std::unordered_map<GLenum, std::string> Shader::PreProcess(const std::string& source)
@@ -52,9 +55,10 @@ namespace BEngine
 
 			// find first newline starting search from pos.
 			uint32_t endOfLine = source.find_first_of("\r\n", pos);
-
 			// Get the opengl enum shader type as a string.
 			std::string type = source.substr(begin, endOfLine - begin);
+
+			BE_ASSERT(ShaderTypeFromString(type), "#type (shaderType) Syntax error.")
 
 			// Get position of the next newline.
 			uint32_t nextLinePos = source.find_first_of("\r\n", endOfLine);
@@ -122,7 +126,7 @@ namespace BEngine
 			glDeleteProgram(program);
 		}
 
-		// Delete shaders
+		// Delete shaders.
 		for (GLuint shaderId : shaderIds)
 		{
 			glDeleteShader(shaderId);
