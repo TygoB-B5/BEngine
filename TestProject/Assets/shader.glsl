@@ -4,22 +4,24 @@
     layout(location=0)in vec3 aPos;
     layout(location=1)in vec3 aTestPos;
 
-    uniform float lol;
-    out vec3 oTestPos;
+    uniform float _FunnyFloat;
+    out float oFunnyFloat;
 
     void main()
     {
-        oTestPos = aTestPos;
-        gl_Position=vec4(aPos.x,aPos.y,aPos.z, 1);
+        oFunnyFloat = _FunnyFloat;
+        gl_Position=vec4(aPos.x, aPos.y, aPos.z, 1);
     }
 
 #type fragment
 #version 330 core
 
     out vec4 FragColor;
-    in vec3 oTestPos;
+
+    in float oFunnyFloat;
 
     void main()
     {
-        FragColor=vec4(1.0f * oTestPos.x, 0.5f  * oTestPos.y,.2f  * oTestPos.z,1.f);
+        vec4 col = vec4(-1.0f, 1.0f, 1.0f, 1.0f) * oFunnyFloat;
+        FragColor = col;
     }

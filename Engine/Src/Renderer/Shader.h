@@ -2,9 +2,7 @@
 #include "bepch.h"
 #include "VertexLayout.h"
 #include "glad/glad.h"
-
-#define VERTEX_SRC_PREFIX "#vertex"
-#define FRAGMENT_SRC_PREFIX "#fragment"
+#include "glm/glm.hpp"
 
 namespace BEngine
 {
@@ -22,6 +20,12 @@ namespace BEngine
 
 		// Unbind this shader.
 		void UnBind();
+
+		// Upload different variable types to shader.
+		void UploadUniformFloat(const std::string& uniformName, float value);
+		void UploadUniformInt(const std::string& uniformName, int value);
+		void UploadUniformVec3(const std::string& uniformName, const glm::vec3& value);
+		void UploadUniformVec4(const std::string& uniformName, const glm::vec4& value);
 
 	private:
 		// Split ever shader type to type and source.

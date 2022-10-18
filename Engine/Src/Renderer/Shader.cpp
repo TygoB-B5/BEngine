@@ -37,6 +37,30 @@ namespace BEngine
 		glUseProgram(0);
 	}
 
+	void Shader::UploadUniformFloat(const std::string& uniformName, float value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
+		glProgramUniform1f(m_RendererID, location, value);
+	}
+
+	void Shader::UploadUniformInt(const std::string& uniformName, int value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
+		glProgramUniform1i(m_RendererID, location, value);
+	}
+
+	void Shader::UploadUniformVec3(const std::string& uniformName, const glm::vec3& value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
+		glProgramUniform3f(m_RendererID, location, value.x, value.y, value.z);
+	}
+
+	void Shader::UploadUniformVec4(const std::string& uniformName, const glm::vec4& value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
+		glProgramUniform4f(m_RendererID, location, value.x, value.y, value.z, value.w);
+	}
+
 	std::unordered_map<GLenum, std::string> Shader::PreProcess(const std::string& source)
 	{
 		std::unordered_map<GLenum, std::string> sources;

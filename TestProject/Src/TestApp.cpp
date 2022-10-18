@@ -18,33 +18,38 @@ public:
 					{ GL_FLOAT, 3}
 				}));
 
-
-		// Define three vertices with 3D positions
 		float vertices[] = {
 			-0.5f, -0.5f, 0.0f, 0.25f, 0.5f, 0.25f,
 			0.5f, -0.5f, 0.0f,  0.5f, 0.25f, 1,
-			0.0f,  0.5f, 0.0f,  1, 0.5f, 0.25f,
+			0.5f,  0.5f, 0.0f,  1, 0.5f, 0.25f,
+			-0.5f,  0.5f, 0.0f,  1, 0.5f, 0.25f,
 		};
 
-		// Generate vertex buffer object (VBO) and vertex array object (VAO)
-		unsigned int VBO, VAO;
+		uint32_t indices[] = {
+			0, 1, 2, 2, 3, 0
+		};
+
+		unsigned int VBO, VAO, IBO;
 		glGenVertexArrays(1, &VAO);
 		glGenBuffers(1, &VBO);
+		glGenBuffers(1, &IBO);
 
-		// Bind VAO, then bind VBO
 		glBindVertexArray(VAO);
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-		// Copy the vertex data into the buffer's memory
+		glBindBuffer(GL_ARRAY_BUFFER, VBO);
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		// Unbind so other calls won't modify VBO and VAO
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
 		m_VertLayout->Bind();
+
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
-
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 		this->VAO = VAO;
+		this->IBO = IBO;
 	}
 
 	virtual void OnUpdate() override
@@ -53,14 +58,15 @@ public:
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		m_Shader->Bind();
-
+		m_Shader->UploadUniformFloat("_FunnyFloat", sin(BEngine::Time::GetElapsedTime() * 10));
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	}
 
 	BEngine::RefPtr<BEngine::Shader> m_Shader;
 	BEngine::RefPtr<BEngine::VertexLayout> m_VertLayout;
-	int VAO;
+	int VAO, IBO;
 };
 
 BEngine::Application* CreateApplication()

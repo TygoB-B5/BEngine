@@ -9,6 +9,7 @@ namespace BEngine
 	Log::Log()
 		: m_LastLogColor((Log::LogColor)0), m_ConsoleHandle(GetStdHandle(STD_OUTPUT_HANDLE))
 	{
+		SetConsoleTextAttribute(m_ConsoleHandle, (uint8_t)LogColor::White);
 	}
 
 	void Log::LogMessageImpl(LogColor color, const std::string& message)
