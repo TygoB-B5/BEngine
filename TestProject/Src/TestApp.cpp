@@ -1,4 +1,5 @@
 #include <BEngine.h>
+#include "glm/glm.hpp"
 
 class TestApp : public BEngine::Application
 {
@@ -44,14 +45,13 @@ public:
 
 	virtual void OnUpdate() override
 	{
-		glClearColor(0.05f, 0.06f, 0.05f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		BEngine::RenderCommands::Clear({ 0.05f, 0.06f, 0.05f });
 
 		m_Shader->Bind();
 		m_Shader->UploadUniformFloat("_FunnyFloat", sin(BEngine::Time::GetElapsedTime() * 10));
 		m_VertLayout->Bind();
 
-		glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetElementCount(), GL_UNSIGNED_INT, 0);
+		BEngine::RenderCommands::DrawElements(m_IndexBuffer->GetElementCount());
 	}
 
 	BEngine::RefPtr<BEngine::Shader> m_Shader;

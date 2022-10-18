@@ -145,6 +145,7 @@
     <ClCompile Include="Src\Renderer\Buffer.cpp" />
     <ClCompile Include="Src\File.cpp" />
     <ClCompile Include="Libs\glad\src\glad.c" />
+    <ClCompile Include="Src\Renderer\RenderCommands.cpp" />
     <ClCompile Include="Src\Renderer\Shader.cpp" />
     <ClCompile Include="Src\Application.cpp" />
     <ClCompile Include="bepch.cpp">
@@ -163,6 +164,7 @@
     <ClCompile Include="Src\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Renderer\RenderCommands.h" />
     <ClInclude Include="Src\Renderer\Buffer.h" />
     <ClInclude Include="Src\File.h" />
     <ClInclude Include="Src\Renderer\Shader.h" />
