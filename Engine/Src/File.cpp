@@ -1,9 +1,9 @@
-#include "FileReader.h"
+#include "File.h"
 #include "Core.h"
 
 namespace BEngine
 {
-	std::string FileReader::OpenFile(const std::string& filepath)
+	std::string FileReader::ReadFile(const std::string& filepath)
 	{
 		// Create filestream and attempt to open file.
 		std::fstream myFile;
@@ -20,5 +20,14 @@ namespace BEngine
 
 		// Return a string from the buffer.
 		return buffer.str();
+	}
+
+	void FileWriter::WriteFile(const std::string& filepath, const std::string& data)
+	{
+		// Create file and write the data to it.
+		std::ofstream myFile(filepath);
+		myFile.write(&data[0], data.size());
+
+		BE_INFO("File created in directory: " + filepath)
 	}
 }

@@ -1,6 +1,6 @@
 #include "Shader.h"
 #include "Src/Core.h"
-#include "Src/FileReader.h"
+#include "Src/File.h"
 #include "glad/glad.h"
 
 namespace BEngine
@@ -13,9 +13,10 @@ namespace BEngine
 		return 0;
 	}
 
-	Shader::Shader(const std::string& filename)
+	Shader::Shader(const std::string& filepath)
 	{
-		std::string src = FileReader::OpenFile(filename);
+		std::string src = FileReader::ReadFile(filepath);
+
 		m_Sources = PreProcess(src);
 		Compile(m_Sources);
 	}

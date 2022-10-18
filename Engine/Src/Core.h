@@ -40,7 +40,7 @@
 #ifdef BE_DISTRIBUTE
 	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), FALSE); FreeConsole();
 #else
-	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), TRUE);
+	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), FALSE); FreeConsole(); AllocConsole();
 #endif
 
 #include <memory>

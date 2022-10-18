@@ -10,8 +10,8 @@ namespace BEngine
 	class Shader
 	{
 	public:
-		// Create a shader instance with shader file.
-		Shader(const std::string& filename);
+		// Create a shader instance with filepath to shader.
+		Shader(const std::string& filepath);
 
 		~Shader();
 
