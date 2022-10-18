@@ -39,7 +39,7 @@ namespace BEngine
 		uint32_t offset = 0;
 		m_Stride = 0;
 
-		// Calculate stride based on vertex elements.
+		// Calculate stride based on ever vertex element and amount in vertexElements.
 		for (uint32_t i = 0; i < m_DataElements.size(); i++)
 		{
 			m_Stride += GlDatatypeSize(m_DataElements[i].DataType) * m_DataElements[i].Amount;
