@@ -13,12 +13,15 @@ namespace BEngine
 
 		// Enable z axis depth testing.
 		glEnable(GL_DEPTH_TEST);
+
+		// Set z axis depth testing rendering mode.
+		glDepthFunc(GL_LEQUAL);
 	}
 
 
 	void RenderCommands::Clear()
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
 	void RenderCommands::ClearColor(const glm::vec4& color)

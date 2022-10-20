@@ -9,7 +9,7 @@
     void main()
     {
     amogus = uViewProjection[0][0];
-        gl_Position = vec4(aPosition.x + amogus, aPosition.y, aPosition.z, 1);
+        gl_Position = vec4(aPosition.x + sin(amogus), aPosition.y + cos(amogus), aPosition.z, 1);
     }
 
 #type fragment
@@ -19,5 +19,5 @@
     in float amogus;
     void main()
     {
-        FragColor = vec4(1.0f * amogus, cos(amogus) * 0.5f, 1.0f * -amogus, 0.5f);
+        FragColor = vec4(sin(amogus), cos(amogus), 1.0f, abs(sin(amogus) * cos(amogus)));
     }
