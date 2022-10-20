@@ -9,11 +9,11 @@ namespace BEngine
 
 	// This class will be a container for renderable data.
 
-	class RenderData
+	class VertexData
 	{
 	public:
-		RenderData();
-		RenderData(const std::vector<VertexDataElement>& layout, const std::vector<float>& vertices, const std::vector<uint32_t>& indices);
+		VertexData();
+		VertexData(const std::vector<VertexDataElement>& layout, const std::vector<float>& vertices, const std::vector<uint32_t>& indices);
 
 		// Set various types of data.
 

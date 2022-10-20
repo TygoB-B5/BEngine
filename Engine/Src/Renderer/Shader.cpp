@@ -38,19 +38,19 @@ namespace BEngine
 		glUseProgram(0);
 	}
 
-	void Shader::UploadUnitformMat4(const std::string& uniformName, const glm::mat4& value)
+	void Shader::UploadUniformMat4(const std::string& uniformName, const glm::mat4& value)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
 		glProgramUniformMatrix4fv(m_RendererID, location, 1, GL_FALSE, &value[0][0]);
 	}
 
-	void Shader::UploadUnitformMat3(const std::string& uniformName, const glm::mat3& value)
+	void Shader::UploadUniformMat3(const std::string& uniformName, const glm::mat3& value)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
 		glProgramUniformMatrix3fv(m_RendererID, location, 1, GL_FALSE, &value[0][0]);
 	}
 
-	void Shader::UploadUnitformMat2(const std::string& uniformName, const glm::mat2& value)
+	void Shader::UploadUniformMat2(const std::string& uniformName, const glm::mat2& value)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
 		glProgramUniformMatrix2fv(m_RendererID, location, 1, GL_FALSE, &value[0][0]);

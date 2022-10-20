@@ -9,48 +9,107 @@ public:
 		: BEngine::Application("TestApp")
 	{
 		GetWindow()->SetVsync(true);
-		std::vector<float> vertices = {
-					-0.5f, -0.5f, 1,
-					 0.5f, -0.5f, 1,	
-					 0.5f,  0.5f, 1,	
-					-0.5f,  0.5f, 1,
+
+
+
+		std::vector<GLuint> indices{
+		0,  1,  2,
+		3,  4,  5,
+
+		6,  7,  8,
+		9, 10, 11,
+
+		12, 13, 14,
+		15, 16, 17,
+
+		18, 19, 20,
+		21, 22, 23,
+
+		24, 25, 26,
+		27, 28, 29,
+
+		30, 31, 32,
+		33, 34, 35,
 		};
 
-		std::vector<float> vertices2 = {
-			-0.5f - 0.25f, -0.5f - 0.25f, 1,
-			 0.5f - 0.25f, -0.5f - 0.25f, 1,
-			 0.5f - 0.25f,  0.5f - 0.25f, 1,
-			-0.5f - 0.25f,  0.5f - 0.25f, 1,
-		};
+		std::vector<float> vertices{
+			// Front
+		    -0.5000, -0.5000,  0.5000, 0.0f, 0.0f, 1.0f,
+			 0.5000, -0.5000,  0.5000, 0.0f, 0.0f, 1.0f,
+			-0.5000,  0.5000,  0.5000, 0.0f, 0.0f, 1.0f,
+			-0.5000,  0.5000,  0.5000, 0.0f, 0.0f, 1.0f,
+			 0.5000, -0.5000,  0.5000, 0.0f, 0.0f, 1.0f,
+			 0.5000,  0.5000,  0.5000, 0.0f, 0.0f, 1.0f,
 
-		std::vector<uint32_t> indices = {
-			2, 1, 0, 0, 3, 2
+			 // Back
+			-0.5000, -0.5000, -0.5000, 0.0f, 0.0f, -1.0f,
+			-0.5000,  0.5000, -0.5000, 0.0f, 0.0f, -1.0f,
+			 0.5000, -0.5000, -0.5000, 0.0f, 0.0f, -1.0f,
+			 0.5000, -0.5000, -0.5000, 0.0f, 0.0f, -1.0f,
+			-0.5000,  0.5000, -0.5000, 0.0f, 0.0f, -1.0f,
+			 0.5000,  0.5000, -0.5000, 0.0f, 0.0f, -1.0f,
+
+			 // Right
+			 0.5000, -0.5000, -0.5000, 1.0f, 0.0f, 0.0f,
+			 0.5000,  0.5000, -0.5000, 1.0f, 0.0f, 0.0f,
+			 0.5000, -0.5000,  0.5000, 1.0f, 0.0f, 0.0f,
+			 0.5000, -0.5000,  0.5000, 1.0f, 0.0f, 0.0f,
+			 0.5000,  0.5000, -0.5000, 1.0f, 0.0f, 0.0f,
+			 0.5000,  0.5000,  0.5000, 1.0f, 0.0f, 0.0f,
+									   			   
+			 // Left				   			   
+			-0.5000, -0.5000, -0.5000, -1.0f, 0.0f, 0.0f,
+			-0.5000, -0.5000,  0.5000, -1.0f, 0.0f, 0.0f,
+			-0.5000,  0.5000, -0.5000, -1.0f, 0.0f, 0.0f,
+			-0.5000,  0.5000, -0.5000, -1.0f, 0.0f, 0.0f,
+			-0.5000, -0.5000,  0.5000, -1.0f, 0.0f, 0.0f,
+			-0.5000,  0.5000,  0.5000, -1.0f, 0.0f, 0.0f,
+
+			// Bottom
+			-0.5000, -0.5000, -0.5000, 0.0f, -1.0f, 0.0f,
+			 0.5000, -0.5000, -0.5000, 0.0f, -1.0f, 0.0f,
+			-0.5000, -0.5000,  0.5000, 0.0f, -1.0f, 0.0f,
+			-0.5000, -0.5000,  0.5000, 0.0f, -1.0f, 0.0f,
+			 0.5000, -0.5000, -0.5000, 0.0f, -1.0f, 0.0f,
+			 0.5000, -0.5000,  0.5000, 0.0f, -1.0f, 0.0f,
+
+			 // Top
+			-0.5000,  0.5000, -0.5000, 0.0f, 1.0f, 0.0f,
+			-0.5000,  0.5000,  0.5000, 0.0f, 1.0f, 0.0f,
+			 0.5000,  0.5000, -0.5000, 0.0f, 1.0f, 0.0f,
+			 0.5000,  0.5000, -0.5000, 0.0f, 1.0f, 0.0f,
+			-0.5000,  0.5000,  0.5000, 0.0f, 1.0f, 0.0f,
+			 0.5000,  0.5000,  0.5000, 0.0f, 1.0f, 0.0f,
 		};
 
 		m_Shader = std::make_shared<BEngine::Shader>("Assets/shader.glsl");
 
-		m_Obj = std::make_shared<BEngine::RenderData>(std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}}, vertices, indices);
-		m_Obj2 = std::make_shared<BEngine::RenderData>(std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}}, vertices2, indices);
-
+		m_Obj = std::make_shared<BEngine::VertexData>(std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}, { GL_FLOAT, 3 }}, vertices, indices);
+		m_Camera = std::make_shared<BEngine::PerspectiveCamera>(90, 16.0f / 9.0f, 0.01f, 1000.0f);
 
 		BEngine::RenderCommands::Init();
 	}
 
 	virtual void OnUpdate() override
 	{
+		m_Camera->SetPosition(m_Camera->GetPosition() - 
+			glm::vec3(
+				(BEngine::Input::IsKeyHeld(KEY_A) * 1 - BEngine::Input::IsKeyHeld(KEY_D)) * BEngine::Time::GetDeltaTime(),
+				(BEngine::Input::IsKeyHeld(KEY_S) * 1 - BEngine::Input::IsKeyHeld(KEY_W)) * BEngine::Time::GetDeltaTime(),
+				(BEngine::Input::IsKeyHeld(KEY_Q) * 1 - BEngine::Input::IsKeyHeld(KEY_E)) * BEngine::Time::GetDeltaTime()));
+
+		BEngine::Renderer::BeginFrame(m_Camera);
+
 		BEngine::RenderCommands::ClearColor({ 0.05f, 0.06f, 0.05f });
 		BEngine::RenderCommands::Clear();
 
-		m_Shader->Bind();
-		m_Shader->UploadUnitformMat4("uViewProjection", glm::mat4(BEngine::Time::GetElapsedTime() * 5));
-		BEngine::Renderer::Draw(m_Obj);
-		m_Shader->UploadUnitformMat4("uViewProjection", glm::mat4(BEngine::Time::GetElapsedTime()));
-		BEngine::Renderer::Draw(m_Obj2);
+		BEngine::Renderer::Draw(m_Obj, m_Shader);
 	}
 
 	BEngine::RefPtr<BEngine::Shader> m_Shader;
 
-	BEngine::RefPtr<BEngine::RenderData> m_Obj, m_Obj2;
+	BEngine::RefPtr<BEngine::VertexData> m_Obj;
+	BEngine::RefPtr<BEngine::PerspectiveCamera> m_Camera;
 };
 
 

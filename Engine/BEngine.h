@@ -9,5 +9,6 @@
 
 #include "Renderer/Shader.h"
 #include "Renderer/RenderCommands.h"
-#include "Renderer/RenderData.h"
+#include "Renderer/VertexData.h"
 #include "Renderer/Renderer.h"
+#include "Renderer/Camera.h"

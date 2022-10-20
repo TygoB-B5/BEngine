@@ -54,10 +54,13 @@
     <ClCompile Include="Src\Renderer\RenderCommands.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Renderer\RenderData.cpp">
+    <ClCompile Include="Src\Renderer\VertexData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Renderer\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Renderer\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,7 +107,10 @@
     <ClInclude Include="Src\Renderer\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Renderer\RenderData.h">
+    <ClInclude Include="Src\Renderer\VertexData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Renderer\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

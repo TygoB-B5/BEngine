@@ -5,17 +5,17 @@ namespace BEngine
 {
 	void RenderCommands::Init()
 	{
-		// Enable transparent objects.
+		// Enable transparent rendering & color blending for transparent objects.
 		glEnable(GL_BLEND);
-
-		// Enable color blending for transparent objects.
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		// Enable z axis depth testing.
-		glEnable(GL_DEPTH_TEST);
-
 		// Set z axis depth testing rendering mode.
-		glDepthFunc(GL_LEQUAL);
+		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LESS);
+
+		// Disable back faces from being rendered.
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
 	}
 
 

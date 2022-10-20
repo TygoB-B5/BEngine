@@ -143,7 +143,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Renderer\Buffer.cpp" />
-    <ClCompile Include="Src\Renderer\RenderData.cpp" />
+    <ClCompile Include="Src\Renderer\Camera.cpp" />
+    <ClCompile Include="Src\Renderer\VertexData.cpp" />
     <ClCompile Include="Src\Renderer\Renderer.cpp" />
     <ClCompile Include="Src\Utils\File.cpp" />
     <ClCompile Include="Libs\glad\src\glad.c" />
@@ -166,9 +167,10 @@
     <ClCompile Include="Src\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Renderer\Camera.h" />
     <ClInclude Include="Src\Renderer\RenderCommands.h" />
     <ClInclude Include="Src\Renderer\Buffer.h" />
-    <ClInclude Include="Src\Renderer\RenderData.h" />
+    <ClInclude Include="Src\Renderer\VertexData.h" />
     <ClInclude Include="Src\Renderer\Renderer.h" />
     <ClInclude Include="Src\Utils\File.h" />
     <ClInclude Include="Src\Renderer\Shader.h" />
