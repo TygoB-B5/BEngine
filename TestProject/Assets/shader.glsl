@@ -1,29 +1,23 @@
 #type vertex
 #version 330 core
 
-    layout(location=0)in vec3 aPos;
-    layout(location=1)in vec3 aTestPos;
+    layout(location = 0) in vec3 aPosition;
 
-    uniform float _FunnyFloat;
-    out float oFunnyFloat;
-    out vec3 oTestPos;
+    uniform mat4 uViewProjection;
+
+    out float amogus;
     void main()
     {
-        oTestPos = aTestPos;
-        oFunnyFloat = _FunnyFloat;
-        gl_Position=vec4(aPos.x, aPos.y, aPos.z, 1);
+    amogus = uViewProjection[0][0];
+        gl_Position = vec4(aPosition.x + amogus, aPosition.y, aPosition.z, 1);
     }
 
 #type fragment
 #version 330 core
 
     out vec4 FragColor;
-
-    in vec3 oTestPos;
-    in float oFunnyFloat;
-
+    in float amogus;
     void main()
     {
-        vec4 col = vec4(-1.0f * oTestPos.x, 1.0f * oTestPos.y, 1.0f * oTestPos.z, 1.0f) * oFunnyFloat;
-        FragColor = col;
+        FragColor = vec4(1.0f * amogus, cos(amogus) * 0.5f, 1.0f * -amogus, 0.5f);
     }

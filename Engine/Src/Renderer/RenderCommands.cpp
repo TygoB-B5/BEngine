@@ -3,20 +3,31 @@
 
 namespace BEngine
 {
-
-	void RenderCommands::Clear(const glm::vec4& color)
+	void RenderCommands::Init()
 	{
-		glClearColor(color.r, color.g, color.b, color.a);
+		// Enable transparent objects.
+		glEnable(GL_BLEND);
+
+		// Enable color blending for transparent objects.
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		// Enable z axis depth testing.
+		glEnable(GL_DEPTH_TEST);
+	}
+
+
+	void RenderCommands::Clear()
+	{
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
-	void RenderCommands::Clear(const glm::vec3& color)
+	void RenderCommands::ClearColor(const glm::vec4& color)
 	{
-		Clear({ color.r, color.g, color.b, 1.0f });
+		glClearColor(color.r, color.g, color.b, color.a);
 	}
 
-	void RenderCommands::DrawElements(uint32_t size)
+	void RenderCommands::ClearColor(const glm::vec3& color)
 	{
-		glDrawElements(GL_TRIANGLES, size, GL_UNSIGNED_INT, 0);
+		ClearColor({ color.r, color.g, color.b, 1.0f });
 	}
 }

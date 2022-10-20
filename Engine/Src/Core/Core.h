@@ -20,7 +20,9 @@
 // Initialize log macros if build configuration is not Distribute.
 
 #if !defined(BE_DISTRIBUTE)
-	#include "Log.h"
+
+	#include "Utils/Log.h"
+
 	#define BE_TRACE(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::White, std::string("[TRACE] ") + message);
 	#define BE_INFO(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Green, std::string("[INFO] ") + message);
 	#define BE_WARN(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Yellow, std::string("[WARN] ") + message);

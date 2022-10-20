@@ -1,6 +1,6 @@
 #include "Shader.h"
-#include "Src/Core.h"
-#include "Src/File.h"
+#include "Core/Core.h"
+#include "Utils/File.h"
 #include "glad/glad.h"
 
 namespace BEngine
@@ -36,6 +36,24 @@ namespace BEngine
 	void Shader::UnBind()
 	{
 		glUseProgram(0);
+	}
+
+	void Shader::UploadUnitformMat4(const std::string& uniformName, const glm::mat4& value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
+		glProgramUniformMatrix4fv(m_RendererID, location, 1, GL_FALSE, &value[0][0]);
+	}
+
+	void Shader::UploadUnitformMat3(const std::string& uniformName, const glm::mat3& value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
+		glProgramUniformMatrix3fv(m_RendererID, location, 1, GL_FALSE, &value[0][0]);
+	}
+
+	void Shader::UploadUnitformMat2(const std::string& uniformName, const glm::mat2& value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, uniformName.c_str());
+		glProgramUniformMatrix2fv(m_RendererID, location, 1, GL_FALSE, &value[0][0]);
 	}
 
 	void Shader::UploadUniformFloat(const std::string& uniformName, float value)

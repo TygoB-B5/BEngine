@@ -9,57 +9,48 @@ public:
 		: BEngine::Application("TestApp")
 	{
 		GetWindow()->SetVsync(true);
-
-		m_Shader = std::make_shared<BEngine::Shader>("Assets/shader.glsl");
-
 		std::vector<float> vertices = {
-			-0.5f, -0.5f, 0.0f, 1, 1, -1,
-			0.5f, -0.5f, 0.0f,  1, -1, 1,
-			0.5f,  0.5f, 0.0f,  -1, -1, 1,
-			-0.5f,  0.5f, 0.0f,  1, -1 , -1,
+					-0.5f, -0.5f, 0.0f,
+					 0.5f, -0.5f, 0.0f,	
+					 0.5f,  0.5f, 0.0f,	
+					-0.5f,  0.5f, 0.0f,
+		};
+
+		std::vector<float> vertices2 = {
+			-0.5f - 0.25f, -0.5f - 0.25f, 0.0f,
+			 0.5f - 0.25f, -0.5f - 0.25f, 0.0f,
+			 0.5f - 0.25f,  0.5f - 0.25f, 0.0f,
+			-0.5f - 0.25f,  0.5f - 0.25f, 0.0f,
 		};
 
 		std::vector<uint32_t> indices = {
 			0, 1, 2, 2, 3, 0
 		};
 
+		m_Shader = std::make_shared<BEngine::Shader>("Assets/shader.glsl");
 
-		m_VertLayout = std::make_shared<BEngine::VertexArray>();
-		m_VertBuffer = std::make_shared<BEngine::VertexBuffer>();
-		m_IndexBuffer = std::make_shared<BEngine::IndexBuffer>();
-
-		m_VertLayout->Bind();
-
-		m_VertBuffer->SetData(vertices);
-		m_IndexBuffer->SetData(indices);
-
-		m_VertLayout->SetLayout({
-			{ GL_FLOAT, 3},
-			{ GL_FLOAT, 3 }
-			});
-
-		m_VertBuffer->UnBind();
-		m_VertLayout->UnBind();
-		m_IndexBuffer->UnBind();
+		m_Obj = std::make_shared<BEngine::RenderData>(std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}}, vertices, indices);
+		m_Obj2 = std::make_shared<BEngine::RenderData>(std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}}, vertices2, indices);
 	}
 
 	virtual void OnUpdate() override
 	{
-		BEngine::RenderCommands::Clear({ 0.05f, 0.06f, 0.05f });
+		BEngine::RenderCommands::ClearColor({ 0.05f, 0.06f, 0.05f });
+		BEngine::RenderCommands::Clear();
 
 		m_Shader->Bind();
-		m_Shader->UploadUniformFloat("_FunnyFloat", sin(BEngine::Time::GetElapsedTime() * 10));
-		m_VertLayout->Bind();
-
-		BEngine::RenderCommands::DrawElements(m_IndexBuffer->GetElementCount());
+		m_Shader->UploadUnitformMat4("uViewProjection", glm::mat4(sin(BEngine::Time::GetElapsedTime() * 2)));
+		BEngine::Renderer::Draw(m_Obj);
+		m_Shader->UploadUnitformMat4("uViewProjection", glm::mat4(sin(BEngine::Time::GetElapsedTime() * 4)));
+		BEngine::Renderer::Draw(m_Obj2);
 	}
 
 	BEngine::RefPtr<BEngine::Shader> m_Shader;
-	BEngine::RefPtr<BEngine::VertexArray> m_VertLayout;
 
-	BEngine::RefPtr<BEngine::VertexBuffer> m_VertBuffer;
-	BEngine::RefPtr<BEngine::IndexBuffer> m_IndexBuffer;
+	BEngine::RefPtr<BEngine::RenderData> m_Obj, m_Obj2;
 };
+
+
 
 BEngine::Application* CreateApplication()
 {

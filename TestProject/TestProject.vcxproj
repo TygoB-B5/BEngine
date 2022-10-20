@@ -78,7 +78,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Engine/Libs/glm/glm;$(SolutionDir)Engine/Libs/glfw/include;$(SolutionDir)Engine/Libs/glad/include;%(AdditionalIncludeDirectories);$(SolutionDir)Engine/Libs/glm</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Engine/Libs/glm/glm;$(SolutionDir)Engine/Libs/glfw/include;$(SolutionDir)Engine/Libs/glad/include;%(AdditionalIncludeDirectories);$(SolutionDir)Engine/Libs/glm;$(SolutionDir)Engine/Src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -95,7 +95,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;;%(PreprocessorDefinitions);_RELEASE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Engine/Libs/glm/glm;$(SolutionDir)Engine/Libs/glfw/include;$(SolutionDir)Engine/Libs/glad/include;%(AdditionalIncludeDirectories);$(SolutionDir)Engine/Libs/glm</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Engine/Libs/glm/glm;$(SolutionDir)Engine/Libs/glfw/include;$(SolutionDir)Engine/Libs/glad/include;%(AdditionalIncludeDirectories);$(SolutionDir)Engine/Libs/glm;$(SolutionDir)Engine/Src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,7 +114,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions);_DISTRIBUTE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Engine/Libs/glm/glm;$(SolutionDir)Engine/Libs/glfw/include;$(SolutionDir)Engine/Libs/glad/include;%(AdditionalIncludeDirectories);$(SolutionDir)Engine/Libs/glm</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Engine;$(SolutionDir)Engine/Libs/glm/glm;$(SolutionDir)Engine/Libs/glfw/include;$(SolutionDir)Engine/Libs/glad/include;%(AdditionalIncludeDirectories);$(SolutionDir)Engine/Libs/glm;$(SolutionDir)Engine/Src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

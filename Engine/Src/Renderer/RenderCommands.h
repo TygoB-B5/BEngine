@@ -6,10 +6,16 @@ namespace BEngine
 	class RenderCommands
 	{
 	public:
-		static void Clear(const glm::vec4& color);
-		static void Clear(const glm::vec3& color);
 
-		static void DrawElements(uint32_t size);
+		// Set default renderer settings.
+		static void Init();
+
+		// Clear the color and depth buffer.
+		static void Clear();
+
+		// Set the clear background color.
+		static void ClearColor(const glm::vec4& color);
+		static void ClearColor(const glm::vec3& color);
 	};
 	
 }

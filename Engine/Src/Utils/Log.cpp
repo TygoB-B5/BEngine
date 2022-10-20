@@ -1,5 +1,5 @@
 #include "Log.h"
-#include "Core.h"
+#include "Core/Core.h"
 
 namespace BEngine
 {

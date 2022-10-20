@@ -3,6 +3,7 @@
 
 namespace BEngine
 {
+
 	class VertexBuffer
 	{
 	public:

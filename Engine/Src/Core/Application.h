@@ -2,7 +2,7 @@
 #include "bepch.h"
 
 #include "Core.h"
-#include "Log.h"
+#include "Utils/Log.h"
 #include "Window.h"
 #include "Input.h"
 

@@ -1,5 +1,5 @@
 #include "VertexArray.h"
-#include "Src/Core.h"
+#include "Core/Core.h"
 
 namespace BEngine
 {
@@ -54,7 +54,7 @@ namespace BEngine
 			glEnableVertexAttribArray(i);
 
 			// Set vertex attribute data.
-			glVertexAttribPointer(i, m_DataElements[i].Amount, m_DataElements[i].DataType, GL_FALSE, 24, (const void*)offset);
+			glVertexAttribPointer(i, m_DataElements[i].Amount, m_DataElements[i].DataType, GL_FALSE, m_Stride, (const void*)offset);
 
 			// Increase offset for next element.
 			offset += GlDatatypeSize(m_DataElements[i].DataType) * m_DataElements[i].Amount;

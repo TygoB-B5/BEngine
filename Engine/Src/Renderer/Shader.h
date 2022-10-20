@@ -21,6 +21,9 @@ namespace BEngine
 		void UnBind();
 
 		// Upload different variable types to shader.
+		void UploadUnitformMat4(const std::string& uniformName, const glm::mat4& value);
+		void UploadUnitformMat3(const std::string& uniformName, const glm::mat3& value);
+		void UploadUnitformMat2(const std::string& uniformName, const glm::mat2& value);
 		void UploadUniformFloat(const std::string& uniformName, float value);
 		void UploadUniformInt(const std::string& uniformName, int value);
 		void UploadUniformVec3(const std::string& uniformName, const glm::vec3& value);

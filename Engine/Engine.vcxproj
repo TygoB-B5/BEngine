@@ -81,7 +81,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -103,7 +103,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -127,7 +127,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -143,11 +143,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Renderer\Buffer.cpp" />
-    <ClCompile Include="Src\File.cpp" />
+    <ClCompile Include="Src\Renderer\RenderData.cpp" />
+    <ClCompile Include="Src\Renderer\Renderer.cpp" />
+    <ClCompile Include="Src\Utils\File.cpp" />
     <ClCompile Include="Libs\glad\src\glad.c" />
     <ClCompile Include="Src\Renderer\RenderCommands.cpp" />
     <ClCompile Include="Src\Renderer\Shader.cpp" />
-    <ClCompile Include="Src\Application.cpp" />
+    <ClCompile Include="Src\Core\Application.cpp" />
     <ClCompile Include="bepch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -156,26 +158,28 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bepch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Distribution|Win32'">bepch.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="Src\Entry.h" />
-    <ClCompile Include="Src\Input.cpp" />
-    <ClCompile Include="Src\Log.cpp" />
-    <ClCompile Include="Src\Time.cpp" />
-    <ClCompile Include="Src\Window.cpp" />
+    <ClCompile Include="Src\Core\Entry.h" />
+    <ClCompile Include="Src\Core\Input.cpp" />
+    <ClCompile Include="Src\Utils\Log.cpp" />
+    <ClCompile Include="Src\Core\Time.cpp" />
+    <ClCompile Include="Src\Core\Window.cpp" />
     <ClCompile Include="Src\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Renderer\RenderCommands.h" />
     <ClInclude Include="Src\Renderer\Buffer.h" />
-    <ClInclude Include="Src\File.h" />
+    <ClInclude Include="Src\Renderer\RenderData.h" />
+    <ClInclude Include="Src\Renderer\Renderer.h" />
+    <ClInclude Include="Src\Utils\File.h" />
     <ClInclude Include="Src\Renderer\Shader.h" />
-    <ClInclude Include="Src\Application.h" />
+    <ClInclude Include="Src\Core\Application.h" />
     <ClInclude Include="BEngine.h" />
     <ClInclude Include="bepch.h" />
-    <ClInclude Include="Src\Core.h" />
-    <ClInclude Include="Src\Input.h" />
-    <ClInclude Include="Src\Log.h" />
-    <ClInclude Include="Src\Time.h" />
-    <ClInclude Include="Src\Window.h" />
+    <ClInclude Include="Src\Core\Core.h" />
+    <ClInclude Include="Src\Core\Input.h" />
+    <ClInclude Include="Src\Utils\Log.h" />
+    <ClInclude Include="Src\Core\Time.h" />
+    <ClInclude Include="Src\Core\Window.h" />
     <ClInclude Include="Src\Renderer\VertexArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
