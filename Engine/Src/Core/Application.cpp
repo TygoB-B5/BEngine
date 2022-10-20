@@ -8,17 +8,22 @@ namespace BEngine
 	Application::Application(const std::string& appName)
 		: m_AppName(appName)
 	{
-		Init();	
+		Init();
 	}
 
 	void Application::Run()
 	{
+		// Initializes application that uses BEngine.
+		OnInit();
+
 		// Main application loop.
 		while (!m_Window->IsClosed())
 		{
 			Input::Flush();
 			Time::Tick();
 			m_Window->Update();
+
+			// Updates application that uses BEngine.
 			OnUpdate();
 		}
 	}

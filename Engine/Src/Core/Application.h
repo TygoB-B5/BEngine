@@ -18,6 +18,7 @@ namespace BEngine
 		const RefPtr<Window>& GetWindow() const { return m_Window; }
 
 	public:
+		virtual void OnInit() = 0;
 		virtual void OnUpdate() = 0;
 
 	private:
