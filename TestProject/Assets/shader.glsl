@@ -7,8 +7,6 @@
 
     uniform mat4 uViewProjection;
 
-
-
     out float intensity;
     out vec2 oTexCoord;
 
@@ -35,5 +33,5 @@
 
     void main()
     {
-        FragColor = texture(uTexture, oTexCoord);
+        FragColor = texture(uTexture, oTexCoord * 2);
     }

@@ -86,7 +86,12 @@ public:
 
 		m_Obj = std::make_shared<BEngine::VertexData>(std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}, { GL_FLOAT, 3 }, { GL_FLOAT, 2 }}, vertices, indices);
 		m_Camera = std::make_shared<BEngine::PerspectiveCamera>(90.0f, 16.0f / 9.0f, 0.01f, 1000.0f);
-		m_Texture = std::make_shared<BEngine::Texture2D>("Assets/checkerboard.png");
+		m_Camera->SetPosition({ 0.0f, 0.0f, 2.0f });
+
+		m_Texture1 = std::make_shared<BEngine::Texture2D>("Assets/testtex1.png");
+		m_Texture2 = std::make_shared<BEngine::Texture2D>("Assets/testtex2.png");
+		m_Texture3 = std::make_shared<BEngine::Texture2D>("Assets/testtex3.png");
+		m_Texture4 = std::make_shared<BEngine::Texture2D>("Assets/testtex4.png");
 
 		BEngine::RenderCommands::Init();
 	}
@@ -104,7 +109,28 @@ public:
 		BEngine::RenderCommands::ClearColor({ 0.05f, 0.06f, 0.05f });
 		BEngine::RenderCommands::Clear();
 
-		m_Texture->Bind();
+		m_Texture1->Bind(0);
+		m_Texture2->Bind(1);
+		m_Texture3->Bind(2);
+		m_Texture4->Bind(3);
+
+		if (BEngine::Input::IsKeyPressed(KEY_1))
+		{
+			m_Shader->UploadUniformTextureSlot("uTexture", 0);
+		}
+		if (BEngine::Input::IsKeyPressed(KEY_2))
+		{
+			m_Shader->UploadUniformTextureSlot("uTexture", 1);
+		}
+		if (BEngine::Input::IsKeyPressed(KEY_3))
+		{
+			m_Shader->UploadUniformTextureSlot("uTexture", 2);
+		}
+		if (BEngine::Input::IsKeyPressed(KEY_4))
+		{
+			m_Shader->UploadUniformTextureSlot("uTexture", 3);
+		}
+
 		BEngine::Renderer::Draw(m_Obj, m_Shader);
 	}
 
@@ -112,7 +138,7 @@ public:
 
 	BEngine::RefPtr<BEngine::VertexData> m_Obj;
 	BEngine::RefPtr<BEngine::PerspectiveCamera> m_Camera;
-	BEngine::RefPtr<BEngine::Texture2D> m_Texture;
+	BEngine::RefPtr<BEngine::Texture2D> m_Texture1, m_Texture2, m_Texture3, m_Texture4;
 };
 
 

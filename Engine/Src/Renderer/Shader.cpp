@@ -80,6 +80,11 @@ namespace BEngine
 		glProgramUniform4f(m_RendererID, location, value.x, value.y, value.z, value.w);
 	}
 
+	void Shader::UploadUniformTextureSlot(const std::string& uniformName, int value)
+	{
+		UploadUniformInt(uniformName, value);
+	}
+
 	std::unordered_map<GLenum, std::string> Shader::PreProcess(const std::string& source)
 	{
 		std::unordered_map<GLenum, std::string> sources;

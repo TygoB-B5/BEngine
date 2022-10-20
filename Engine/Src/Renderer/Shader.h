@@ -28,6 +28,7 @@ namespace BEngine
 		void UploadUniformInt(const std::string& uniformName, int value);
 		void UploadUniformVec3(const std::string& uniformName, const glm::vec3& value);
 		void UploadUniformVec4(const std::string& uniformName, const glm::vec4& value);
+		void UploadUniformTextureSlot(const std::string& uniformName, int value);
 
 	private:
 		// Split ever shader type to type and source.
