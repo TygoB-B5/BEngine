@@ -86,6 +86,9 @@
       <AdditionalDependencies>glfw3.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Engine/Libs/glfw/lib-vc2022;$(SolutionDir)Engine/Libs/FreeImage</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)Assets" "$(TargetDir)Assets" /E /Y /I</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -105,6 +108,9 @@
       <AdditionalDependencies>glfw3.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Engine/Libs/glfw/lib-vc2022;$(SolutionDir)Engine/Libs/FreeImage</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)Assets" "$(TargetDir)Assets" /E /Y /I</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|Win32'">
     <ClCompile>
@@ -125,7 +131,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Engine/Libs/glfw/lib-vc2022;$(SolutionDir)Engine/Libs/FreeImage</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>signtool sign /fd SHA256 /a $(SolutionDir)Bin/$(Configuration)/TestProject.exe</Command>
+      <Command>xcopy "$(ProjectDir)Assets" "$(TargetDir)Assets" /E /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
