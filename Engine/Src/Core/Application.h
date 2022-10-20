@@ -11,21 +11,19 @@ namespace BEngine
 	class Application
 	{
 	public:
-		Application(const std::string& appName); 
-
+		void Init();
 		void Run();
 
 		const RefPtr<Window>& GetWindow() const { return m_Window; }
+
+	public:
+		virtual Window::WindowProperties SetupWindowProperties();
 
 	public:
 		virtual void OnInit() = 0;
 		virtual void OnUpdate() = 0;
 
 	private:
-		void Init();
-
-	private:
 		RefPtr<Window> m_Window;
-		std::string m_AppName;
 	};
 }

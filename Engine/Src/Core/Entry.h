@@ -10,6 +10,9 @@ int main()
 	// Create new instance of application
 	BEngine::Application* app = CreateApplication();
 
+	// Initialize application.
+	app->Init();
+
 	// Run application.
 	app->Run();
 

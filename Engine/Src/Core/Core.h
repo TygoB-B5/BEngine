@@ -45,6 +45,8 @@
 	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), TRUE);
 #endif
 
+// Typedef used to make the definition of shared and unique ptr more clear.
+
 #include <memory>
 namespace BEngine
 {
@@ -54,3 +56,7 @@ namespace BEngine
 	template<class T>
 	using RefPtr = std::shared_ptr<T>;
 }
+
+
+// Defined to make FreeImage bit arrangement RGB instead of BGR
+#define FREEIMAGE_COLORORDER FREEIMAGE_COLORORDER_RGB

@@ -4,15 +4,13 @@
 class TestApp : public BEngine::Application
 {
 public:
-
-	TestApp()
-		: BEngine::Application("TestApp")
-	{}
+	virtual BEngine::Window::WindowProperties SetupWindowProperties() override
+	{
+		return { "MyTestApp", 1280, 720, true };
+	}
 
 	virtual void OnInit() override
 	{
-		GetWindow()->SetVsync(true);
-
 		std::vector<GLuint> indices{
 		0,  1,  2,
 		3,  4,  5,
@@ -86,6 +84,7 @@ public:
 		m_Shader = std::make_shared<BEngine::Shader>("Assets/shader.glsl");
 
 		m_Obj = std::make_shared<BEngine::VertexData>(std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}, { GL_FLOAT, 3 }, { GL_FLOAT, 2 }}, vertices, indices);
+		
 		m_Camera = std::make_shared<BEngine::PerspectiveCamera>(90.0f, 16.0f / 9.0f, 0.01f, 1000.0f);
 		m_Camera->SetPosition({ 0.0f, 0.0f, 2.0f });
 
@@ -107,7 +106,7 @@ public:
 
 		BEngine::Renderer::BeginFrame(m_Camera);
 
-		BEngine::RenderCommands::ClearColor({ 0.05f, 0.06f, 0.05f });
+		BEngine::RenderCommands::ClearColor({ 0.25f, 0.26f, 0.25f });
 		BEngine::RenderCommands::Clear();
 
 		m_Texture1->Bind(0);

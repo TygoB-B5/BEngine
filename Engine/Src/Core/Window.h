@@ -11,24 +11,33 @@ namespace BEngine
 	class Window
 	{
 	public:
-		Window(const std::string& name, uint32_t width, uint32_t height, bool isVsync = true);
+		struct WindowProperties
+		{
+			WindowProperties(std::string name = "Application", uint32_t width = 1280, uint32_t height = 720, bool vsync = true)
+				: Name(name), Width(width), Height(height), Vsync(vsync)
+			{}
+
+			std::string Name;
+			uint32_t Width;
+			uint32_t Height;
+			bool Vsync;
+		};
+
+	public:
+		Window(const WindowProperties& properties);
 
 		// Swap screen buffers and poll events.
 		void Update();
 
-		// Return if the window should be closed.
+		// Returns true if the window should be closed.
 		inline bool IsClosed() const { return m_ShouldClose; }
 
-		// Enable or disable vertical sync.
-		void SetVsync(bool enabled);
-
+		// Returns the native GLFWindow* of this application.
 		GLFWwindow* GetNativeWindow() const { return m_Window; }
 
 	private:
 		GLFWwindow* m_Window;
-		std::string m_Name;
-		uint32_t m_Width, m_Height;
-		bool m_Vsync;
 		bool m_ShouldClose;
+		WindowProperties m_WindowProperties;
 	};
 }

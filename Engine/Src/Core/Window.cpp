@@ -2,10 +2,9 @@
 
 namespace BEngine
 {
-	Window::Window(const std::string& name, uint32_t width, uint32_t height, bool isVsync)
-		: m_Width(width), m_Height(height), m_Name(name), m_Vsync(isVsync), m_ShouldClose(false)
+	Window::Window(const WindowProperties& properties)
+		:  m_ShouldClose(false)
 	{
-
 		// Initialize GLFW.
 		if (!glfwInit())
 		{
@@ -13,8 +12,8 @@ namespace BEngine
 			glfwTerminate();
 		}
 
-		// Create glfw winow.
-		m_Window = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
+		// Create glfw window.
+		m_Window = glfwCreateWindow(properties.Width, properties.Height, properties.Name.c_str(), NULL, NULL);
 
 		BE_ASSERT(m_Window, "Window was not Initialized.")
 
@@ -32,10 +31,10 @@ namespace BEngine
 			BE_ASSERT(false, "[" + std::to_string(error) + "] " + msg)
 			});
 
-		// Turn vsync on or off.
-		glfwSwapInterval(isVsync ? 1 : 0);
+		// Turn vsync on or off based on properties.
+		glfwSwapInterval(properties.Vsync ? 1 : 0);
 
-		// Log OpenGl specs.
+		// Log OpenGl info.
 		BE_INFO("BEngine")
 			BE_INFO(std::string(" ") + (const char*)glGetString(GL_RENDERER))
 			BE_INFO(std::string(" ") + (const char*)glGetString(GL_VERSION))
@@ -51,17 +50,7 @@ namespace BEngine
 		// Swap screen buffers.
 		glfwSwapBuffers(m_Window);
 
-		// Set shouldClose variable when the user closes the window.
+		// Set ShouldClose variable true if the user closes the window.
 		m_ShouldClose = glfwWindowShouldClose(m_Window);
-
-
-	}
-
-	void Window::SetVsync(bool enabled)
-	{
-		m_Vsync = enabled;
-
-		// Turn vsync on or off.
-		glfwSwapInterval(m_Vsync ? 1 : 0);
 	}
 }

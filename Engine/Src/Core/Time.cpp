@@ -12,7 +12,6 @@ namespace BEngine
 
 	void Time::TickImpl()
 	{
-
 		// Get current glfw time.
 		m_ElapsedTime = (float)glfwGetTime();
 
