@@ -81,7 +81,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src;$(ProjectDir)Libs/FreeImage</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -89,9 +89,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src;$(ProjectDir)Libs/FreeImage;$(ProjectDir)Libs/FreeImage</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)Libs\FreeImage\FreeImage.dll" "$(TargetDir)" /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -103,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src;$(ProjectDir)Libs/FreeImage</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -113,9 +116,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src;;$(ProjectDir)Libs/FreeImage</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)Libs\FreeImage\FreeImage.dll" "$(TargetDir)" /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Distribution|Win32'">
     <ClCompile>
@@ -127,7 +133,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libs/glad/include;$(ProjectDir)Libs/glfw/include;$(ProjectDir)Libs/glm;$(SolutionDir)Engine;$(ProjectDir)Src;$(ProjectDir)Libs/FreeImage</AdditionalIncludeDirectories>
       <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -137,13 +143,17 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Libs/glfw/lib-vc2022;$(ProjectDir)Libs/glad/src;;$(ProjectDir)Libs/FreeImage</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)Libs\FreeImage\FreeImage.dll" "$(TargetDir)" /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Renderer\Buffer.cpp" />
     <ClCompile Include="Src\Renderer\Camera.cpp" />
+    <ClCompile Include="Src\Renderer\Texture.cpp" />
     <ClCompile Include="Src\Renderer\VertexData.cpp" />
     <ClCompile Include="Src\Renderer\Renderer.cpp" />
     <ClCompile Include="Src\Utils\File.cpp" />
@@ -170,6 +180,7 @@
     <ClInclude Include="Src\Renderer\Camera.h" />
     <ClInclude Include="Src\Renderer\RenderCommands.h" />
     <ClInclude Include="Src\Renderer\Buffer.h" />
+    <ClInclude Include="Src\Renderer\Texture.h" />
     <ClInclude Include="Src\Renderer\VertexData.h" />
     <ClInclude Include="Src\Renderer\Renderer.h" />
     <ClInclude Include="Src\Utils\File.h" />

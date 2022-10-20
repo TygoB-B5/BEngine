@@ -12,3 +12,4 @@
 #include "Renderer/VertexData.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/Camera.h"
+#include "Renderer/Texture.h"
