@@ -153,9 +153,11 @@
   <ItemGroup>
     <ClCompile Include="Src\Renderer\Buffer.cpp" />
     <ClCompile Include="Src\Renderer\Camera.cpp" />
+    <ClCompile Include="Src\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="Src\Renderer\Texture.cpp" />
     <ClCompile Include="Src\Renderer\VertexData.cpp" />
     <ClCompile Include="Src\Renderer\Renderer.cpp" />
+    <ClCompile Include="Src\Utils\CameraController.cpp" />
     <ClCompile Include="Src\Utils\File.cpp" />
     <ClCompile Include="Libs\glad\src\glad.c" />
     <ClCompile Include="Src\Renderer\RenderCommands.cpp" />
@@ -178,11 +180,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Renderer\Camera.h" />
+    <ClInclude Include="Src\Renderer\FrameBuffer.h" />
     <ClInclude Include="Src\Renderer\RenderCommands.h" />
     <ClInclude Include="Src\Renderer\Buffer.h" />
     <ClInclude Include="Src\Renderer\Texture.h" />
     <ClInclude Include="Src\Renderer\VertexData.h" />
     <ClInclude Include="Src\Renderer\Renderer.h" />
+    <ClInclude Include="Src\Utils\CameraController.h" />
     <ClInclude Include="Src\Utils\File.h" />
     <ClInclude Include="Src\Renderer\Shader.h" />
     <ClInclude Include="Src\Core\Application.h" />

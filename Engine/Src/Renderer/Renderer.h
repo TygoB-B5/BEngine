@@ -15,7 +15,7 @@ namespace BEngine
 	class Renderer
 	{
 	public:
-		static void BeginFrame(const RefPtr<PerspectiveCamera> camera);
+		static void BeginFrame(const RefPtr<PerspectiveCamera>& camera);
 		static void Draw(const RefPtr<VertexData>& vertexData, const RefPtr<Shader>& shader, uint32_t indexCount = 0);
 
 	private:

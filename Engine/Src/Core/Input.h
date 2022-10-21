@@ -129,7 +129,8 @@
 
 #include "bepch.h"
 #include "glm/glm.hpp"
-#include "GLFW/glfw3.h"
+#include "Application.h"
+#include "glad/glad.h"
 
 namespace BEngine
 {
@@ -137,9 +138,8 @@ namespace BEngine
 	class Input
 	{
 	public:
-
-		// Initialize Input class singleton.
-		static void Init(GLFWwindow* window);
+		// Initializes input class.
+		static void Init();
 
 		// Clear scroll input.
 		static void Flush();

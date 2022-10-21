@@ -5,10 +5,11 @@
 
 namespace BEngine
 {
+	Application* Application::s_Instance = nullptr;
+
 	Window::WindowProperties Application::SetupWindowProperties()
 	{
 		BE_WARN("Creating window with default properties")
-		BE_WARN("Override \"Window::WindowProperties Application::SetupWindowProperties()\" to set custom properties");
 
 		return Window::WindowProperties();
 	}
@@ -32,10 +33,12 @@ namespace BEngine
 
 	void Application::Init()
 	{
-		// Create window with properties defined in virtual SetupWindowProperties method.
-		m_Window = std::make_shared<Window>(SetupWindowProperties());
+		// Assign singleton variable.
+		s_Instance = this;
 
-		// Initialize input class.
-		Input::Init(m_Window->GetNativeWindow());
+		// Create window instance.
+		m_Window = std::make_shared<Window>(s_Instance->SetupWindowProperties());
+
+		Input::Init();
 	}
 }

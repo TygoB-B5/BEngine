@@ -1,5 +1,6 @@
 #include <BEngine.h>
 #include "glm/glm.hpp"
+#include "glad/glad.h"
 
 class TestApp : public BEngine::Application
 {
@@ -83,30 +84,42 @@ public:
 
 		m_Shader = std::make_shared<BEngine::Shader>("Assets/shader.glsl");
 
+		m_ScreenShader = std::make_shared<BEngine::Shader>("Assets/screenshader.glsl");
+
 		m_Obj = std::make_shared<BEngine::VertexData>(std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}, { GL_FLOAT, 3 }, { GL_FLOAT, 2 }}, vertices, indices);
 		
-		m_Camera = std::make_shared<BEngine::PerspectiveCamera>(90.0f, 16.0f / 9.0f, 0.01f, 1000.0f);
+		m_Camera = std::make_shared<BEngine::PerspectiveCamera>(70, 16.0f / 9.0f, 0.01f, 1000.0f);
 		m_Camera->SetPosition({ 0.0f, 0.0f, 2.0f });
+		m_CameraController = std::make_shared<BEngine::CameraController>(m_Camera, 0.25f, 1, 2);
 
 		m_Texture1 = std::make_shared<BEngine::Texture2D>("Assets/testtex1.png");
 		m_Texture2 = std::make_shared<BEngine::Texture2D>("Assets/testtex2.png");
 		m_Texture3 = std::make_shared<BEngine::Texture2D>("Assets/testtex3.png");
 		m_Texture4 = std::make_shared<BEngine::Texture2D>("Assets/testtex4.png");
 
+		m_ScreenQuad = std::make_shared<BEngine::VertexData>(
+			std::vector<BEngine::VertexDataElement>{ {GL_FLOAT, 3}, { GL_FLOAT, 2 }},
+			std::vector<float>{
+			-1, -1, 0, 0, 0,
+				1, -1, 0, 1, 0,
+				1, 1, 0, 1, 1,
+				-1, 1, 0, 0, 1},
+			std::vector<uint32_t>{0, 1, 2, 2, 3, 0});
+
+		BEngine::FrameBufferProperties props = { 1280, 720 };
+		m_FrameBuffer = std::make_shared<BEngine::FrameBuffer>(props);
+
 		BEngine::RenderCommands::Init();
 	}
 
 	virtual void OnUpdate() override
 	{
-		m_Camera->SetPosition(m_Camera->GetPosition() - 
-			glm::vec3(
-				(BEngine::Input::IsKeyHeld(KEY_A) * 1 - BEngine::Input::IsKeyHeld(KEY_D)) * BEngine::Time::GetDeltaTime(),
-				(BEngine::Input::IsKeyHeld(KEY_S) * 1 - BEngine::Input::IsKeyHeld(KEY_W)) * BEngine::Time::GetDeltaTime(),
-				(BEngine::Input::IsKeyHeld(KEY_Q) * 1 - BEngine::Input::IsKeyHeld(KEY_E)) * BEngine::Time::GetDeltaTime()));
+		m_FrameBuffer->Bind();
 
-		BEngine::Renderer::BeginFrame(m_Camera);
+		m_CameraController->Update();
 
-		BEngine::RenderCommands::ClearColor({ 0.25f, 0.26f, 0.25f });
+		BEngine::Renderer::BeginFrame(m_CameraController->GetCamera());
+		BEngine::RenderCommands::ClearColor({ 0.04f, 0.06f, 0.05f });
 		BEngine::RenderCommands::Clear();
 
 		m_Texture1->Bind(0);
@@ -132,13 +145,22 @@ public:
 		}
 
 		BEngine::Renderer::Draw(m_Obj, m_Shader);
+		
+		m_FrameBuffer->UnBind();
+		BEngine::RenderCommands::Clear();
+
+		m_FrameBuffer->BindColorAttachment();
+
+		BEngine::Renderer::Draw(m_ScreenQuad, m_ScreenShader);
 	}
 
-	BEngine::RefPtr<BEngine::Shader> m_Shader;
-
-	BEngine::RefPtr<BEngine::VertexData> m_Obj;
 	BEngine::RefPtr<BEngine::PerspectiveCamera> m_Camera;
+	BEngine::RefPtr<BEngine::Shader> m_Shader, m_ScreenShader;
+	BEngine::RefPtr<BEngine::VertexData> m_Obj;
+	BEngine::RefPtr<BEngine::VertexData> m_ScreenQuad;
+	BEngine::RefPtr<BEngine::CameraController> m_CameraController;
 	BEngine::RefPtr<BEngine::Texture2D> m_Texture1, m_Texture2, m_Texture3, m_Texture4;
+	BEngine::RefPtr<BEngine::FrameBuffer> m_FrameBuffer;
 };
 
 

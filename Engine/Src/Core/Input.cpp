@@ -19,9 +19,10 @@ namespace BEngine
 
 	glm::ivec2 Input::s_MousePosition = { 0, 0 };
 
-
-	void Input::Init(GLFWwindow* window)
+	void Input::Init()
 	{
+
+		GLFWwindow* window = Application::Get()->GetWindow()->GetNativeWindow();
 
 		// Setup key callback.
 		glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -32,7 +33,7 @@ namespace BEngine
 				case 0:
 					s_KeysReleased.set(key, 1);
 					s_KeysRepeating.set(key, action);
-				break;
+					break;
 
 				case 1:
 					s_KeysPressed.set(key, action);

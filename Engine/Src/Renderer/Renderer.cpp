@@ -5,7 +5,7 @@ namespace BEngine
 {
 	FrameData Renderer::s_FrameData;
 
-	void Renderer::BeginFrame(const RefPtr<PerspectiveCamera> camera)
+	void Renderer::BeginFrame(const RefPtr<PerspectiveCamera>& camera)
 	{
 		s_FrameData.m_ViewProjectionMatrix = camera->GetViewProjectionMatrix();
 	}

@@ -11,6 +11,12 @@ namespace BEngine
 		SetTexture(filePath);
 	}
 
+	Texture2D::~Texture2D()
+	{
+		// Deletes the texture.
+		glDeleteTextures(1, &m_TextureID);
+	}
+
 	void Texture2D::SetTexture(const std::string& filePath)
 	{
 		// Bind current texture to be written to.

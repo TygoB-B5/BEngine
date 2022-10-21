@@ -7,6 +7,7 @@ namespace BEngine
 
 	VertexBuffer::VertexBuffer()
 	{
+
 		// Generate buffer object.
 		glGenBuffers(1, &m_RenderID);
 	}

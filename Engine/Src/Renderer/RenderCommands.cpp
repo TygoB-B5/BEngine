@@ -1,10 +1,13 @@
 #include "RenderCommands.h"
 #include "glad/glad.h"
+#include "Core/Core.h"
 
 namespace BEngine
 {
 	void RenderCommands::Init()
 	{
+		BE_TRACE("Initialized RenderCommands")
+
 		// Enable transparent rendering & color blending for transparent objects.
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

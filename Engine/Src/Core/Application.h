@@ -11,8 +11,8 @@ namespace BEngine
 	class Application
 	{
 	public:
-		void Init();
 		void Run();
+		void Init();
 
 		const RefPtr<Window>& GetWindow() const { return m_Window; }
 
@@ -23,7 +23,12 @@ namespace BEngine
 		virtual void OnInit() = 0;
 		virtual void OnUpdate() = 0;
 
+	public:
+		static const Application* Get() { return s_Instance; }
+
 	private:
 		RefPtr<Window> m_Window;
+
+		static Application* s_Instance;
 	};
 }
