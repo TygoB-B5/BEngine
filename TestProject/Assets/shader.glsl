@@ -6,19 +6,31 @@
     layout(location = 2) in vec2 aTexCoord;
 
     uniform mat4 uViewProjection;
+    uniform mat4 uModelMatrix;
+    uniform mat4 uLightViewProjectionMatrix;
+    uniform vec3 uLightPosition;
+    uniform vec3 uCameraPosition;
 
-    out float intensity;
+    out float oDiffuseIntensity;
     out vec2 oTexCoord;
-
+    out vec4 oPositionLightSpace;
+    out vec3 oCameraPosition;
+    out vec3 oFragPos;
+    out vec3 oLightDirection;
+    out vec3 oNormal;
 
     void main()
     {
+        oCameraPosition = uCameraPosition;
         oTexCoord = aTexCoord;
+        vec3 fragPos = vec3(uModelMatrix * vec4(aPosition, 1.0));
+        oFragPos = fragPos;
+        oPositionLightSpace = uLightViewProjectionMatrix * vec4(fragPos, 1.0);
+        oNormal = aNormal;
+        oLightDirection = normalize(uLightPosition);
+        oDiffuseIntensity = dot(normalize(uLightPosition), aNormal);
 
-        vec3 dirLight = clamp(normalize(-vec3(-0.5f, -1.0f, -0.2f)) + 0.25f, 0, 1);
-
-        intensity = dot(dirLight, aNormal);
-        gl_Position = uViewProjection * vec4(aPosition.x, aPosition.y, aPosition.z, 1);
+        gl_Position = uViewProjection * vec4(fragPos, 1.0f);
     }
 
 #type fragment
@@ -26,12 +38,47 @@
 
     out vec4 FragColor;
 
-    in float intensity;
     in vec2 oTexCoord;
+    in vec4 oPositionLightSpace;
+    in float oDiffuseIntensity;
+    in vec3 oCameraPosition;
+    in vec3 oFragPos;
+    in vec3 oLightDirection;
+    in vec3 oNormal;
 
     uniform sampler2D uTexture;
+    uniform sampler2D uShadowMap;
 
     void main()
     {
-        FragColor = texture(uTexture, oTexCoord * 2);
+
+        vec3 projCoords = oPositionLightSpace.xyz / oPositionLightSpace.w;
+        projCoords = projCoords * 0.5 + 0.5; 
+
+        float closestDepth = texture(uShadowMap, projCoords.xy).r;   
+
+        float currentDepth = projCoords.z;  
+
+        float bias = -0.0005;
+
+        float shadow = (currentDepth - bias) > closestDepth ? 1.0 : 0.0;  
+
+        if(projCoords.z > 1.0 + bias)
+            shadow = 0.0;
+
+
+        vec3 viewDir = normalize(oCameraPosition - oFragPos);
+        vec3 reflectDir = reflect(-oLightDirection, oNormal);  
+        float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
+
+
+        float specular = spec;  
+
+        float diffuse = oDiffuseIntensity;
+        float ambient = 0.1f;
+        float intensity = clamp( ((1 - shadow) + 0.1f) + clamp(diffuse, 0, 1), 0, 1) + specular * 2;
+
+        vec4 col = texture(uTexture, oTexCoord);
+        col.rgb *= intensity;
+        FragColor = col;
     }

@@ -25,7 +25,6 @@ namespace BEngine
 		RefPtr<PerspectiveCamera> m_Camera;
 
 		glm::vec3 m_CameraPosition, m_CameraRotation;
-		glm::mat4 m_Transform;
 
 		float m_CameraSensitivity;
 		float m_CameraTranslationSpeed, m_CameraTranslationBoostedSpeed;

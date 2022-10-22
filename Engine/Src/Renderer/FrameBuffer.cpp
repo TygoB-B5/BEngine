@@ -22,19 +22,19 @@ namespace BEngine
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RenderID);
 	}
 
-	void FrameBuffer::BindColorAttachment()
+	void FrameBuffer::BindColorAttachment(uint32_t index)
 	{
-		// Set active textureslot to 0.
-		glActiveTexture(GL_TEXTURE0);
+		// Set active textureslot.
+		glActiveTexture(GL_TEXTURE0 + index);
 
 		// Bind color texture.
 		glBindTexture(GL_TEXTURE_2D, m_ColorAttachmentID);
 	}
 
-	void FrameBuffer::BindDepthAttachment()
+	void FrameBuffer::BindDepthAttachment(uint32_t index)
 	{
-		// Set active textureslot to 0.
-		glActiveTexture(GL_TEXTURE0);
+		// Set active textureslot.
+		glActiveTexture(GL_TEXTURE0 + index);
 
 		// Bind color texture.
 		glBindTexture(GL_TEXTURE_2D, m_DepthAttachmentID);
@@ -82,10 +82,17 @@ namespace BEngine
 		glBindTexture(GL_TEXTURE_2D, m_DepthAttachmentID);
 
 		// Write data to the depth texture.
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, properties.Width, properties.Height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, properties.Width, properties.Height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+
+		float borderColor[] = { 1,1,1,1 };
+		glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
 
 		// Set depth texture to frame buffer depth attachment.
-		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, m_DepthAttachmentID, 0);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_DepthAttachmentID, 0);
 
 		BE_ASSERT((glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE), "Framebuffer is not complete.")
 

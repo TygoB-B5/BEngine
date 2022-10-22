@@ -21,10 +21,10 @@ namespace BEngine
 		void Bind();
 
 		// Binds the color attachment to texture 0.
-		void BindColorAttachment();
+		void BindColorAttachment(uint32_t index);
 
 		// Binds the depth attachment to texture 0.
-		void BindDepthAttachment();
+		void BindDepthAttachment(uint32_t index);
 
 		// Unbind frame buffer object. (Revert to default framebuffer)
 		void UnBind();

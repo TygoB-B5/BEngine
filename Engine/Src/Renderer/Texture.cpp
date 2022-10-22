@@ -29,20 +29,21 @@ namespace BEngine
 		// Load image data in to bitmap.
 		FIBITMAP* img = FreeImage_Load(formato, filePath.c_str());
 		BE_ASSERT(img, "Image can not be loaded. " + filePath);
-		
+
 		// Save the width and height of the image to this class.
 		m_Width = FreeImage_GetWidth(img);
 		m_Height = FreeImage_GetHeight(img);
 
 
+		
 		GLenum internalFormat = GL_RGB8;
-		GLenum format = GL_RGB;
+		GLenum format = GL_BGR;
 
 		// Change image format if image is transparent.
 		if (FreeImage_IsTransparent(img))
 		{
 			internalFormat = GL_RGBA8;
-			format = GL_RGBA;
+			format = GL_BGRA;
 
 			// Convert image to 32 bit so the image keeps its transparency.
 			FIBITMAP* temp = FreeImage_ConvertTo32Bits(img);

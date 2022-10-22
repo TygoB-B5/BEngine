@@ -147,8 +147,14 @@ namespace BEngine
 			glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
 			if (!success)
 			{
+				std::string shaderType = "Fragment Shader";
+
+				if (source.first == GL_VERTEX_SHADER)
+				{
+					shaderType = "Vertex Shader\n";
+				}
 				glGetShaderInfoLog(shader, 512, NULL, infoLog);
-				BE_ASSERT(false, std::string(infoLog))
+				BE_ASSERT(false, shaderType + std::string(infoLog))
 				glDeleteShader(shader);
 			}
 
