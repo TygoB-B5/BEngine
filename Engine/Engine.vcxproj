@@ -190,7 +190,7 @@
     <ClInclude Include="Src\Utils\File.h" />
     <ClInclude Include="Src\Renderer\Shader.h" />
     <ClInclude Include="Src\Core\Application.h" />
-    <ClInclude Include="BEngine.h" />
+    <ClInclude Include="Bonfire.h" />
     <ClInclude Include="bepch.h" />
     <ClInclude Include="Src\Core\Core.h" />
     <ClInclude Include="Src\Core\Input.h" />

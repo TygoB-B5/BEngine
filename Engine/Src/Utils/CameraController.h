@@ -15,6 +15,7 @@ namespace Bonfire
 		
 		void Update();
 
+		glm::vec3 GetPosition() const { return m_CameraPosition; }
 		glm::vec3 GetForward();
 		glm::vec3 GetRight();
 		glm::vec3 GetUp();
