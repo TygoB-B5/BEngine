@@ -2,7 +2,7 @@
 #include "bepch.h"
 #include "glad/glad.h"
 
-namespace BEngine
+namespace Bonfire
 {
 
 	struct VertexDataElement

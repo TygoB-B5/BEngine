@@ -1,6 +1,6 @@
 ﻿#include "Window.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	void GLAPIENTRY
 		MessageCallback(GLenum source,
@@ -15,10 +15,10 @@ namespace BEngine
 
 		switch (severity)
 		{
-			case 0: BE_WARN(msg) return;
-			case 1: BE_WARN(msg) return;
-			case 2: BE_WARN(msg) return;
-			case 3: BE_WARN(msg) return;
+			case 0: BF_WARN(msg) return;
+			case 1: BF_WARN(msg) return;
+			case 2: BF_WARN(msg) return;
+			case 3: BF_WARN(msg) return;
 		}
 	}
 
@@ -28,14 +28,14 @@ namespace BEngine
 		// Initialize GLFW.
 		if (!glfwInit())
 		{
-			BE_ASSERT(false, "Unable to Initialize GLFW.")
+			BF_ASSERT(false, "Unable to Initialize GLFW.")
 			glfwTerminate();
 		}
 
 		// Create glfw window.
 		m_Window = glfwCreateWindow(properties.Width, properties.Height, properties.Name.c_str(), NULL, NULL);
 
-		BE_ASSERT(m_Window, "Window was not Initialized.")
+		BF_ASSERT(m_Window, "Window was not Initialized.")
 
 		// Set window to current context.
 		glfwMakeContextCurrent(m_Window);
@@ -43,7 +43,7 @@ namespace BEngine
 		// Initialize GLAD.
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 		{
-			BE_ASSERT(false, "Unable to Initialize GLAD")
+			BF_ASSERT(false, "Unable to Initialize GLAD")
 		}
 
 
@@ -51,7 +51,7 @@ namespace BEngine
 
 		// Set up glfw error callback with lambda.
 		glfwSetErrorCallback([](int error, const char* msg) {
-			BE_ASSERT(false, "[" + std::to_string(error) + "] " + msg)
+			BF_ASSERT(false, "[" + std::to_string(error) + "] " + msg)
 			});
 
 		// Set up opengl error callback with lambda
@@ -64,11 +64,11 @@ namespace BEngine
 		glfwSwapInterval(properties.Vsync ? 1 : 0);
 
 		// Log OpenGl info.
-		BE_INFO("BEngine")
-			BE_INFO(std::string(" ") + (const char*)glGetString(GL_RENDERER))
-			BE_INFO(std::string(" ") + (const char*)glGetString(GL_VERSION))
-			BE_INFO(std::string(" ") + (const char*)glGetString(GL_VENDOR))
-			BE_INFO(std::string(" ") + (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION))
+		BF_INFO("BEngine")
+			BF_INFO(std::string(" ") + (const char*)glGetString(GL_RENDERER))
+			BF_INFO(std::string(" ") + (const char*)glGetString(GL_VERSION))
+			BF_INFO(std::string(" ") + (const char*)glGetString(GL_VENDOR))
+			BF_INFO(std::string(" ") + (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION))
 	}
 
 	void Window::Update()

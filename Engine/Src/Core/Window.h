@@ -6,7 +6,7 @@
 #include "Core.h"
 
 
-namespace BEngine
+namespace Bonfire
 {
 	class Window
 	{

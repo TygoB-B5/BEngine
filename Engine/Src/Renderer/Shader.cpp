@@ -3,7 +3,7 @@
 #include "Utils/File.h"
 #include "glad/glad.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	static GLenum ShaderTypeFromString(const std::string& type)
 	{
@@ -29,7 +29,7 @@ namespace BEngine
 
 	void Shader::Bind()
 	{
-		BE_ASSERT(m_RendererID, "Shader has not been compiled.")
+		BF_ASSERT(m_RendererID, "Shader has not been compiled.")
 		glUseProgram(m_RendererID);
 	}
 
@@ -106,7 +106,7 @@ namespace BEngine
 			// Get the opengl enum shader type as a string.
 			std::string type = source.substr(begin, endOfLine - begin);
 
-			BE_ASSERT(ShaderTypeFromString(type), "#type (shaderType) Syntax error.")
+			BF_ASSERT(ShaderTypeFromString(type), "#type (shaderType) Syntax error.")
 
 			// Get position of the next newline.
 			uint32_t nextLinePos = source.find_first_of("\r\n", endOfLine);
@@ -154,7 +154,7 @@ namespace BEngine
 					shaderType = "Vertex Shader\n";
 				}
 				glGetShaderInfoLog(shader, 512, NULL, infoLog);
-				BE_ASSERT(false, shaderType + std::string(infoLog))
+				BF_ASSERT(false, shaderType + std::string(infoLog))
 				glDeleteShader(shader);
 			}
 
@@ -176,7 +176,7 @@ namespace BEngine
 		glGetProgramiv(program, GL_LINK_STATUS, &success);
 		if (!success) {
 			glGetProgramInfoLog(program, 512, NULL, infoLog);
-			BE_ASSERT(false, std::string(infoLog))
+			BF_ASSERT(false, std::string(infoLog))
 			glDeleteProgram(program);
 		}
 

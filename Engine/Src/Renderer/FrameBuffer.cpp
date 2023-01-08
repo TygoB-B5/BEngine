@@ -1,7 +1,7 @@
 #include "FrameBuffer.h"
 #include "Core/Core.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	FrameBuffer::FrameBuffer(const FrameBufferProperties& properties)
 	{
@@ -60,8 +60,8 @@ namespace BEngine
 
 		Bind();
 
-		BE_ASSERT((properties.Width != 0), "Texture width can not be 0.");
-		BE_ASSERT((properties.Height != 0), "Texture height can not be 0.");
+		BF_ASSERT((properties.Width != 0), "Texture width can not be 0.");
+		BF_ASSERT((properties.Height != 0), "Texture height can not be 0.");
 
 		// Generate color texture and bind it.
 		glGenTextures(1, &m_ColorAttachmentID);
@@ -94,7 +94,7 @@ namespace BEngine
 		// Set depth texture to frame buffer depth attachment.
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_DepthAttachmentID, 0);
 
-		BE_ASSERT((glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE), "Framebuffer is not complete.")
+		BF_ASSERT((glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE), "Framebuffer is not complete.")
 
 		UnBind();
 	}

@@ -4,7 +4,7 @@
 #include "VertexData.h"
 #include "Camera.h"
 
-namespace BEngine
+namespace Bonfire
 {
 
 	struct FrameData

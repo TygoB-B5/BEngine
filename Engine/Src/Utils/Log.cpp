@@ -1,7 +1,7 @@
 #include "Log.h"
 #include "Core/Core.h"
 
-namespace BEngine
+namespace Bonfire
 {
 
 	Log* Log::s_Instance = new Log;

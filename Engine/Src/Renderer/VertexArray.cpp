@@ -1,7 +1,7 @@
 #include "VertexArray.h"
 #include "Core/Core.h"
 
-namespace BEngine
+namespace Bonfire
 {
 
 	uint32_t GlDatatypeSize(uint32_t type)
@@ -15,11 +15,11 @@ namespace BEngine
 		case GL_DOUBLE:       return 8;
 		case GL_UNSIGNED_INT: return 4;
 
-		default: BE_ASSERT(false, "Datatype not implemented."); return 0;
+		default: BF_ASSERT(false, "Datatype not implemented."); return 0;
 		}
 	}
 
-	BEngine::VertexArray::VertexArray()
+	Bonfire::VertexArray::VertexArray()
 		: m_Stride(0)
 	{
 		// Generate vertex array object.
@@ -32,7 +32,7 @@ namespace BEngine
 		glDeleteVertexArrays(1, &m_RenderID);
 	}
 
-	void BEngine::VertexArray::SetLayout(const std::vector<VertexDataElement>& vertexElements)
+	void Bonfire::VertexArray::SetLayout(const std::vector<VertexDataElement>& vertexElements)
 	{
 		m_DataElements = vertexElements;
 

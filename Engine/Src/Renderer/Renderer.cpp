@@ -1,7 +1,7 @@
 #include "Renderer.h"
 #include "glad/glad.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	FrameData Renderer::s_FrameData;
 

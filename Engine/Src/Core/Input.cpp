@@ -1,7 +1,7 @@
 #include "Input.h"
 #include "Core.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	// Initialize input singleton.
 	Input* Input::s_Input = new Input;

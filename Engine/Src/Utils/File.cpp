@@ -1,7 +1,7 @@
 #include "File.h"
 #include "Core/Core.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	std::string FileReader::ReadFile(const std::string& filepath)
 	{
@@ -9,7 +9,7 @@ namespace BEngine
 		std::fstream myFile;
 		myFile.open(filepath, std::ios::in | std::ios::binary);
 
-		BE_ASSERT(myFile, "Could not find file in directory: " + filepath)
+		BF_ASSERT(myFile, "Could not find file in directory: " + filepath)
 
 		// Create string buffer to read from.
 		std::stringstream buffer;
@@ -28,6 +28,6 @@ namespace BEngine
 		std::ofstream myFile(filepath);
 		myFile.write(&data[0], data.size());
 
-		BE_INFO("File created in directory: " + filepath)
+		BF_INFO("File created in directory: " + filepath)
 	}
 }

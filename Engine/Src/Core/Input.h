@@ -132,7 +132,7 @@
 #include "Application.h"
 #include "glad/glad.h"
 
-namespace BEngine
+namespace Bonfire
 {
 
 	class Input

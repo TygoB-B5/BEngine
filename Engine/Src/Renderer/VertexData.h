@@ -4,7 +4,7 @@
 #include "VertexArray.h"
 #include "Buffer.h"
 
-namespace BEngine
+namespace Bonfire
 {
 
 	// This class will be a container for renderable data.

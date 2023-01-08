@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	PerspectiveCamera::PerspectiveCamera(float fov, float aspectRatio, float zNear, float zFar)
 		: m_Fov(glm::degrees(fov)), m_AspectRatio(aspectRatio), m_Near(zNear), m_Far(zFar), m_Position(glm::vec3(0.0f)), m_Rotation(glm::vec3(0.0f))

@@ -1,14 +1,14 @@
 #include "Core.h"
 #include "Application.h"
 
-extern BEngine::Application* CreateApplication();
+extern Bonfire::Application* CreateApplication();
 
 int main()
 {
 	SHOW_CONSOLE()
 
 	// Create new instance of application
-	BEngine::Application* app = CreateApplication();
+	Bonfire::Application* app = CreateApplication();
 
 	// Initialize application.
 	app->Init();

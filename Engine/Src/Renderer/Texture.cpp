@@ -2,7 +2,7 @@
 #include "Core/Core.h"
 #include "glad/glad.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	Texture2D::Texture2D(const std::string& filePath)
 	{
@@ -24,11 +24,11 @@ namespace BEngine
 
 		// Get filetype of the image in filepath.
 		FREE_IMAGE_FORMAT formato = FreeImage_GetFileType(filePath.c_str(), 0);
-		BE_ASSERT(!(formato == FIF_UNKNOWN), "Image file type is unknown. " + filePath)
+		BF_ASSERT(!(formato == FIF_UNKNOWN), "Image file type is unknown. " + filePath)
 
 		// Load image data in to bitmap.
 		FIBITMAP* img = FreeImage_Load(formato, filePath.c_str());
-		BE_ASSERT(img, "Image can not be loaded. " + filePath);
+		BF_ASSERT(img, "Image can not be loaded. " + filePath);
 
 		// Save the width and height of the image to this class.
 		m_Width = FreeImage_GetWidth(img);
@@ -48,7 +48,7 @@ namespace BEngine
 			// Convert image to 32 bit so the image keeps its transparency.
 			FIBITMAP* temp = FreeImage_ConvertTo32Bits(img);
 
-			BE_ASSERT(temp, "Image can not be converted. " + filePath);
+			BF_ASSERT(temp, "Image can not be converted. " + filePath);
 
 			img = temp;
 		}

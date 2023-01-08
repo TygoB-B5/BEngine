@@ -1,22 +1,22 @@
 #include "CameraController.h"
 #include "Core/Time.h"
 
-namespace BEngine
+namespace Bonfire
 {
 
-	const glm::vec3& CameraController::GetForward()
+	glm::vec3 CameraController::GetForward()
 	{
 		auto& a = m_Camera->GetViewMatrix();
 		return  glm::normalize(-glm::vec3(a[0].z, a[1].z, a[2].z));
 	}
 
-	const glm::vec3& CameraController::GetRight()
+	glm::vec3 CameraController::GetRight()
 	{
 		auto& a = m_Camera->GetViewMatrix();
 		return glm::normalize(-glm::vec3(a[0].x, a[1].x, a[2].x));
 	}
 
-	const glm::vec3& CameraController::GetUp()
+	glm::vec3 CameraController::GetUp()
 	{
 		auto& a = m_Camera->GetViewMatrix();
 		return glm::normalize(-glm::vec3(a[0].y, a[1].y, a[2].y));

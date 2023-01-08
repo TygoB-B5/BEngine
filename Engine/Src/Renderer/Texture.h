@@ -2,7 +2,7 @@
 #include "bepch.h"
 #include "FreeImage.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	class Texture2D
 	{

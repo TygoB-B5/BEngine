@@ -3,13 +3,13 @@
 
 #include "Renderer/Shader.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	Application* Application::s_Instance = nullptr;
 
 	Window::WindowProperties Application::SetupWindowProperties()
 	{
-		BE_WARN("Creating window with default properties")
+		BF_WARN("Creating window with default properties")
 
 		return Window::WindowProperties();
 	}

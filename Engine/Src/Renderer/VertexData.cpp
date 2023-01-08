@@ -1,6 +1,6 @@
 #include "VertexData.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	void VertexData::Init()
 	{

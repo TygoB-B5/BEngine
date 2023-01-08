@@ -3,7 +3,7 @@
 #include "Core/Input.h"
 #include "glm/glm.hpp"
 
-namespace BEngine
+namespace Bonfire
 {
 	class CameraController
 	{
@@ -15,9 +15,9 @@ namespace BEngine
 		
 		void Update();
 
-		const glm::vec3& GetForward();
-		const glm::vec3& GetRight();
-		const glm::vec3& GetUp();
+		glm::vec3 GetForward();
+		glm::vec3 GetRight();
+		glm::vec3 GetUp();
 
 		const RefPtr<PerspectiveCamera>& GetCamera() const { return m_Camera; }
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "bepch.h"
 
-namespace BEngine
+namespace Bonfire
 {
 
 	class VertexBuffer

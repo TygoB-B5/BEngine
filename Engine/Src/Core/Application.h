@@ -6,7 +6,7 @@
 #include "Window.h"
 #include "Input.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	class Application
 	{

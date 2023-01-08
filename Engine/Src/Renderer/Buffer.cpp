@@ -1,7 +1,7 @@
 #include "Buffer.h"
 #include "glad/glad.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	// Vertex buffer.
 

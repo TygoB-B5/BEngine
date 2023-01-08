@@ -1,7 +1,7 @@
 #include "Time.h"
 #include "GLFW/glfw3.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	// Create singleton instance.
 	Time* Time::s_Time = new Time;

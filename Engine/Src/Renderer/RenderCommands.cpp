@@ -2,11 +2,11 @@
 #include "glad/glad.h"
 #include "Core/Core.h"
 
-namespace BEngine
+namespace Bonfire
 {
 	void RenderCommands::Init()
 	{
-		BE_TRACE("Initialized RenderCommands")
+		BF_TRACE("Initialized RenderCommands")
 
 		// Enable transparent rendering & color blending for transparent objects.
 		glEnable(GL_BLEND);

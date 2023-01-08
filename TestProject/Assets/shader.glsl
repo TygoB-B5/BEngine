@@ -63,8 +63,6 @@
 
         float shadow = (currentDepth - bias) > closestDepth ? 1.0 : 0.0;  
 
-        if(projCoords.z > 1.0 + bias)
-            shadow = 0.0;
 
 
         vec3 viewDir = normalize(oCameraPosition - oFragPos);

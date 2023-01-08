@@ -3,15 +3,15 @@
 // Create engine specific macros for configuration types.
 
 #ifdef _DEBUG
-	#define BE_DEBUG
+	#define BF_DEBUG
 #endif
 
 #ifdef _RELEASE
-	#define BE_RELEASE
+	#define BF_RELEASE
 #endif
 
 #ifdef _DISTRIBUTE
-	#define BE_DISTRIBUTE
+	#define BF_DISTRIBUTE
 #endif
 
 
@@ -19,27 +19,29 @@
 
 // Initialize log macros if build configuration is not Distribute.
 
-#if !defined(BE_DISTRIBUTE)
+#if !defined(BF_DISTRIBUTE)
 
 	#include "Utils/Log.h"
 
-	#define BE_TRACE(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::White, std::string("[TRACE] ") + message);
-	#define BE_INFO(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Green, std::string("[INFO] ") + message);
-	#define BE_WARN(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Yellow, std::string("[WARN] ") + message);
-	#define BE_ERROR(message) BEngine::Log::LogMessage(BEngine::Log::LogColor::Red, std::string("[ERROR] ") + message);
-	#define BE_ASSERT(condition, message)if(!condition) { BEngine::Log::LogMessage(BEngine::Log::LogColor::WhiteOnRed, std::string("[ASSERT] ") + message); DebugBreak(); }
+	#define BF_TRACE(message) Bonfire::Log::LogMessage(Bonfire::Log::LogColor::White, std::string("[TRACE] ") + message);
+	#define BF_INFO(message) Bonfire::Log::LogMessage(Bonfire::Log::LogColor::Green, std::string("[INFO] ") + message);
+	#define BF_WARN(message) Bonfire::Log::LogMessage(Bonfire::Log::LogColor::Yellow, std::string("[WARN] ") + message);
+	#define BF_ERROR(message) Bonfire::Log::LogMessage(Bonfire::Log::LogColor::Red, std::string("[ERROR] ") + message);
+	#define BF_NOTIF(message) Bonfire::Log::LogMessage(Bonfire::Log::LogColor::Purple, std::string("[NOTIF] ") + message);
+	#define BF_ASSERT(condition, message)if(!condition) { Bonfire::Log::LogMessage(Bonfire::Log::LogColor::WhiteOnRed, std::string("[ASSERT] ") + message); DebugBreak(); }
 #else
-	#define BE_TRACE(message) 
-	#define BE_INFO(message)
-	#define BE_WARN(message)
-	#define BE_ERROR(message) 
-	#define BE_ASSERT(condition, message)
+	#define BF_TRACE(message) ;;
+	#define BF_INFO(message)  ;;
+	#define BF_WARN(message)  ;;
+	#define BF_ERROR(message) ;;
+	#define BF_NOTIF(message) ;;
+	#define BF_ASSERT(condition, message) ;;
 #endif
 
 
 // Define free console macro if the config type is distribute, this macro removes the console from the application.
 
-#ifdef BE_DISTRIBUTE
+#ifdef BF_DISTRIBUTE
 	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), FALSE); FreeConsole();
 #else
 	#define SHOW_CONSOLE() ShowWindow(GetConsoleWindow(), TRUE);
@@ -48,7 +50,7 @@
 // Typedef used to make the definition of shared and unique ptr more clear.
 
 #include <memory>
-namespace BEngine
+namespace Bonfire
 {
 	template<class T>
 	using ScopePtr = std::unique_ptr<T>;
